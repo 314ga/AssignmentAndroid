@@ -14,10 +14,6 @@ bin/
 gen/
 out/
 
-# Gradle files
-.gradle/
-build/
-
 # Local configuration file (sdk path, etc)
 local.properties
 
@@ -71,3 +67,18 @@ gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradle.properties
 build.gradle
+.gradle/5.4.1/executionHistory/executionHistory.bin
+.gradle/5.4.1/executionHistory/executionHistory.lock
+.gradle/5.4.1/fileChanges/last-build.bin
+.gradle/5.4.1/fileContent/fileContent.lock
+.gradle/5.4.1/fileHashes/fileHashes.bin
+.gradle/5.4.1/fileHashes/fileHashes.lock
+.gradle/5.4.1/fileHashes/resourceHashesCache.bin
+.gradle/5.4.1/gc.properties
+.gradle/5.4.1/javaCompile/classAnalysis.bin
+.gradle/buildOutputCleanup/outputFiles.bin
+.gradle/buildOutputCleanup/cache.properties
+.gradle/buildOutputCleanup/buildOutputCleanup.lock
+.gradle/5.4.1/javaCompile/taskHistory.bin
+.gradle/5.4.1/javaCompile/javaCompile.lock
+.gradle/vcs-1/gc.properties
