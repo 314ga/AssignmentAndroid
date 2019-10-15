@@ -1,10 +1,15 @@
 package com.example.designernote;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
-import com.example.designernote.ui.login.CreateAccount;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.signature.ObjectKey;
 import com.example.designernote.ui.login.LoginActivity;
+import com.example.designernote.ui.settings.SettingActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -20,6 +25,9 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -27,19 +35,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
+    private String cacheImageNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
+
+        cacheImageNumber = getCacheImageNumber();
         setSupportActionBar(toolbar);
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -48,9 +66,10 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null)
                 {
-                    Toast.makeText(MainActivity.this, "Welcome",
+                    Toast.makeText(MainActivity.this, "Welcome " + user.getDisplayName(),
                             Toast.LENGTH_SHORT).show();
-                    getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
+                    setUserHeader(user.getDisplayName(),user.getEmail());
+
                 } else {
 
                 }
@@ -99,12 +118,13 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
+                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
                 // User chose the "Settings" item, show the app settings UI...
                 return true;
 
             case R.id.action_log_out:
                 logout();
-
                 return true;
 
             default:
@@ -135,5 +155,50 @@ public class MainActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+
+    private void setUserHeader(String name, String email)
+    {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.nameTextView);
+        navUsername.setText(name);
+        TextView navEmail = (TextView) headerView.findViewById(R.id.emailTextView);
+        navEmail.setText(email);
+        ImageView imageView = (ImageView) headerView.findViewById(R.id.imageView);
+
+        FirebaseUser user = mAuth.getInstance().getCurrentUser();
+        String userName = user.getEmail();
+        String imageName = userName.replaceAll("\\.", "_");
+        imageName = imageName.replaceAll("@","-");
+        StorageReference ref = FirebaseStorage.getInstance().getReferenceFromUrl("gs://designernote-52e1e.appspot.com/ProfileImages/" + imageName +".jpg");
+
+        Glide.with(this /* context */)
+                .load(ref)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .signature(new ObjectKey(cacheImageNumber))
+                .into(imageView);
+    }
+
+    private String getCacheImageNumber()
+    {
+        String filename = "profPic";
+        String fileContents = "0";
+
+        Context ctx = getApplicationContext();
+        FileInputStream fileInputStream = null;
+        try {
+            fileInputStream = ctx.openFileInput(filename);
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            fileContents = bufferedReader.readLine();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fileContents;
+
     }
 }
