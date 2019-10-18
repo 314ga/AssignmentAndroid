@@ -33,9 +33,7 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Pe
     public void onBindViewHolder(PersonViewHolder holder, final int position) {
         holder.personImage.setImageResource(personItemList.get(position).getPersonImage());
         holder.customerName.setText(personItemList.get(position).getCustomerName());
-        holder.totalPrice.setText(personItemList.get(position).getDebtPrice());
-        holder.debtPrice.setText(personItemList.get(position).getTotalPrice());
-        holder.workQty.setText(personItemList.get(position).getWorkQty());
+        holder.debtPrice.setText(personItemList.get(position).getDebtPrice());
 
         holder.personImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,16 +52,12 @@ public class PersonCardAdapter extends RecyclerView.Adapter<PersonCardAdapter.Pe
     public class PersonViewHolder extends RecyclerView.ViewHolder {
         ImageView personImage;
         TextView customerName;
-        TextView totalPrice;
         TextView debtPrice;
-        TextView workQty;
         public PersonViewHolder(View view) {
             super(view);
             personImage =view.findViewById(R.id.idPersonImage);
             customerName =view.findViewById(R.id.idPersonName);
-            totalPrice = view.findViewById(R.id.idTotalPrice);
             debtPrice = view.findViewById(R.id.idDebtPrice);
-            workQty = view.findViewById(R.id.idWorkQty);
         }
     }
 }

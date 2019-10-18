@@ -44,10 +44,10 @@ public class HomeFragment extends Fragment {
 
         //Populate the products
         mProductList = new ArrayList<>();
-        mProductList.add(new Person("Aladar",R.drawable.ic_menu_camera,"150€", "400€", "5"));
-        mProductList.add(new Person("Pineapple",R.drawable.ic_menu_camera,"250€", "500€", "8"));
-        mProductList.add(new Person("Mango",R.drawable.ic_menu_camera,"150€", "200€", "4"));
-        mProductList.add(new Person("Johny",R.drawable.ic_menu_camera,"250€", "800", "20"));
+        mProductList.add(new Person("Aladar",R.drawable.ic_launcher_background,"150€", "400€", "5"));
+        mProductList.add(new Person("Pineapple",R.drawable.ic_launcher_background,"250€", "500€", "8"));
+        mProductList.add(new Person("Mango",R.drawable.ic_launcher_background,"150€", "200€", "4"));
+        mProductList.add(new Person("Johny",R.drawable.ic_launcher_background,"250€", "800", "20"));
 
         //set adapter to recyclerview
         mAdapter = new PersonCardAdapter(mProductList,getActivity());

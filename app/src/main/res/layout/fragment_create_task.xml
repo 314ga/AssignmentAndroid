@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--margins-->
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/left_margin"
+        app:layout_constraintGuide_percent=".04"
+        android:orientation="vertical"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/right_margin"
+        app:layout_constraintGuide_percent=".95"
+        android:orientation="vertical"/>
+    <!--top-->
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_margin"
+        app:layout_constraintGuide_percent=".03"
+        android:orientation="horizontal"/>
+    <!--bottom-->
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_margin"
+        app:layout_constraintGuide_percent=".97"
+        android:orientation="horizontal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/first_guide"
+        app:layout_constraintGuide_percent=".30"
+        android:orientation="horizontal"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/second_guide"
+        app:layout_constraintGuide_percent=".60"
+        android:orientation="horizontal"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/first_guide"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintLeft_toLeftOf="@+id/left_margin"
+        app:layout_constraintRight_toLeftOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="@+id/top_margin">
+
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_home"
+            android:scaleType="fitCenter" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/first_guide"
+        app:layout_constraintHorizontal_weight="7"
+        app:layout_constraintLeft_toRightOf="@+id/linearLayout1"
+        app:layout_constraintRight_toRightOf="@id/right_margin"
+        app:layout_constraintTop_toTopOf="@id/top_margin">
+
+        <EditText
+            android:id="@+id/projectName"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/personSelection"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:textSize="20sp">
+
+        </TextView>
+
+        <Spinner
+            android:id="@+id/spinnerPeople"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </Spinner>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/chooseTypeOfWork"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_goneMarginBottom="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/right_margin"
+        app:layout_constraintStart_toStartOf="@+id/left_margin"
+        app:layout_constraintTop_toTopOf="@+id/first_guide"></TextView>
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_optimizationLevel="chains"
+        android:text="CheckBox"
+        app:layout_constraintBottom_toTopOf="@+id/checkBox4"
+        app:layout_constraintStart_toStartOf="@+id/left_margin"
+        app:layout_constraintTop_toBottomOf="@+id/chooseTypeOfWork"
+        app:layout_constraintEnd_toStartOf="@id/checkBox2"/>
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox"
+        app:layout_constraintBottom_toTopOf="@+id/checkBox5"
+        app:layout_constraintStart_toEndOf="@+id/checkBox1"
+        app:layout_constraintEnd_toStartOf="@id/checkBox3"
+        app:layout_constraintTop_toBottomOf="@+id/chooseTypeOfWork">
+
+    </CheckBox>
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox"
+        app:layout_constraintBottom_toTopOf="@+id/checkBox6"
+        app:layout_constraintEnd_toStartOf="@+id/right_margin"
+        app:layout_constraintStart_toEndOf="@+id/checkBox2"
+        app:layout_constraintTop_toBottomOf="@+id/chooseTypeOfWork" />
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox"
+        app:layout_constraintBottom_toTopOf="@+id/second_guide"
+        app:layout_constraintEnd_toStartOf="@id/checkBox5"
+        app:layout_constraintStart_toStartOf="@+id/left_margin"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox1" />
+
+    <CheckBox
+        android:id="@+id/checkBox5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox"
+        app:layout_constraintBottom_toTopOf="@+id/second_guide"
+        app:layout_constraintEnd_toStartOf="@id/checkBox6"
+        app:layout_constraintStart_toEndOf="@+id/checkBox4"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
+
+    <CheckBox
+        android:id="@+id/checkBox6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox"
+        app:layout_constraintBottom_toTopOf="@+id/second_guide"
+        app:layout_constraintEnd_toStartOf="@+id/right_margin"
+        app:layout_constraintStart_toEndOf="@+id/checkBox5"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:id="@+id/saveOnline"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/right_margin"
+        app:layout_constraintStart_toStartOf="@+id/left_margin"
+        app:layout_constraintTop_toTopOf="@+id/second_guide">
+
+    </Switch>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
