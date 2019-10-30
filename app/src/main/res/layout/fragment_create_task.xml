@@ -46,6 +46,13 @@
         app:layout_constraintGuide_percent=".60"
         android:orientation="horizontal"/>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/third_guide"
+        app:layout_constraintGuide_percent=".80"
+        android:orientation="horizontal"/>
+
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="0dp"
@@ -113,7 +120,6 @@
         android:layout_margin="20dp"
         android:gravity="center"
         android:textSize="20sp"
-        app:layout_goneMarginBottom="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
@@ -123,7 +129,6 @@
         android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_optimizationLevel="chains"
         android:text="CheckBox"
         app:layout_constraintBottom_toTopOf="@+id/checkBox4"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
@@ -182,16 +187,46 @@
         app:layout_constraintStart_toEndOf="@+id/checkBox5"
         app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
 
-    <Switch
+    <CheckBox
+        android:id="@+id/checkBox7"
         android:layout_width="wrap_content"
-        android:id="@+id/saveOnline"
+        android:layout_height="wrap_content"
+        android:text="CheckBox"
+        app:layout_constraintBottom_toTopOf="@+id/third_guide"
+        app:layout_constraintEnd_toStartOf="@+id/ownTaskEditText"
+        app:layout_constraintStart_toStartOf="@+id/left_margin"
+        app:layout_constraintTop_toTopOf="@+id/second_guide" />
+
+    <EditText
+        android:id="@+id/ownTaskEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/third_guide"
+        app:layout_constraintEnd_toStartOf="@+id/right_margin"
+        app:layout_constraintStart_toEndOf="@+id/checkBox7"
+        app:layout_constraintTop_toTopOf="@+id/second_guide">
+
+    </EditText>
+
+    <Button
+        android:id="@+id/createTaskBut"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
-        app:layout_constraintTop_toTopOf="@+id/second_guide">
+        app:layout_constraintTop_toTopOf="@+id/third_guide">
+
+    </Button>
+
+    <Switch
+        android:id="@+id/saveOnline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/right_margin"
+        app:layout_constraintStart_toStartOf="@+id/left_margin"
+        app:layout_constraintTop_toBottomOf="@+id/createTaskBut">
 
     </Switch>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

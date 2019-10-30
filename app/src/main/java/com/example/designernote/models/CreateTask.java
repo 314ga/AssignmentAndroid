@@ -1,4 +1,4 @@
-package com.example.designernote.ui.createTask;
+package com.example.designernote.models;
 
 public class CreateTask
 {
@@ -6,13 +6,18 @@ public class CreateTask
     private String projectNameText;
     private String saveOnlineText;
     private String chooseTypeOfWOrkText;
+    private String[] checkBoxes;
+    private String createTaskButText;
 
 
-    public CreateTask(String spinnerPeopleText, String projectNameText, String saveOnlineText, String chooseTypeOfWOrkText) {
+
+    public CreateTask(String spinnerPeopleText, String projectNameText, String saveOnlineText, String chooseTypeOfWOrkText, String createTaskButText, String[] checkBoxes) {
         this.spinnerPeopleText = spinnerPeopleText;
         this.projectNameText = projectNameText;
         this.saveOnlineText = saveOnlineText;
         this.chooseTypeOfWOrkText = chooseTypeOfWOrkText;
+        this.createTaskButText = createTaskButText;
+        this.checkBoxes = checkBoxes;
     }
 
     public String getSpinnerPeopleText() {
@@ -31,4 +36,11 @@ public class CreateTask
         return chooseTypeOfWOrkText;
     }
 
+    public String getCreateTaskButText() {
+        return createTaskButText;
+    }
+
+    public String[] getCheckBoxes() {
+        return checkBoxes;
+    }
 }

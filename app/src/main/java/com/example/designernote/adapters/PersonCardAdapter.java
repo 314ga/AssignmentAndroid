@@ -1,4 +1,4 @@
-package com.example.designernote;
+package com.example.designernote.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.designernote.R;
+import com.example.designernote.models.Person;
 
 import java.util.List;
 

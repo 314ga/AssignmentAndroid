@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.designernote.Person;
-import com.example.designernote.PersonCardAdapter;
+import com.example.designernote.models.Person;
+import com.example.designernote.adapters.PersonCardAdapter;
 import com.example.designernote.R;
 
 import java.util.ArrayList;
@@ -26,6 +26,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private PersonCardAdapter mAdapter;
     private List<Person> mProductList;
+    //TODO:Add observer to the on Create view
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState)
     {

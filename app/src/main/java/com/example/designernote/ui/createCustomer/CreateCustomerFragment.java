@@ -1,4 +1,4 @@
-package com.example.designernote.ui.slideshow;
+package com.example.designernote.ui.createCustomer;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.designernote.R;
 
-public class SlideshowFragment extends Fragment {
+public class CreateCustomerFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private CreateCustomerViewModel createCustomerViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
+        createCustomerViewModel =
+                ViewModelProviders.of(this).get(CreateCustomerViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_create_customer, container, false);
         final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(this, new Observer<String>() {
+        createCustomerViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

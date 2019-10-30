@@ -34,4 +34,6 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="spinner_people">"Select Customer"</string>
+    <string name="create_customer">"Create Customer"</string>
+    <string name="save_online">"Save online"</string>
 </resources>

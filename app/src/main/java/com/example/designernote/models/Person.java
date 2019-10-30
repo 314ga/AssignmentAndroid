@@ -1,4 +1,4 @@
-package com.example.designernote;
+package com.example.designernote.models;
 public class Person {
     public int personImage;
     public String customerName;
