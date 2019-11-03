@@ -16,7 +16,7 @@ public class Customers
     private String email;
     private String phone_number;
 
-    public Customers(int customer_id, String f_name, String l_name, String email, String phone_number) {
+    public Customers(String f_name, String l_name, String email, String phone_number) {
         this.customer_id = customer_id;
         this.f_name = f_name;
         this.l_name = l_name;

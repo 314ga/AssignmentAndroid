@@ -12,10 +12,6 @@ import androidx.room.PrimaryKey;
         @ForeignKey(entity = Customers.class,
         parentColumns = "customer_id",
         childColumns = "customer_id",
-        onDelete = ForeignKey.CASCADE),
-        @ForeignKey(entity = Price.class,
-        parentColumns = "price_id",
-        childColumns = "price_id",
         onDelete = ForeignKey.CASCADE)})
 public class Projects
 {
@@ -23,11 +19,31 @@ public class Projects
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "project_id")
     private int project_id;
-    private int customer_id, price_id;
+    private int customer_id;
     private String p_name, text_diff_task;
     private boolean logo, poster, webpage, photoedit, menu_design, diffeerent_task, bussinness_card, stored_online,
     paid;
-    private double spent_hours;
+    private double spent_hours, price;
+
+    public Projects(int customer_id, double price, String p_name, String text_diff_task, boolean logo,
+                    boolean poster, boolean webpage, boolean photoedit, boolean menu_design, boolean diffeerent_task,
+                    boolean bussinness_card, boolean stored_online, boolean paid, double spent_hours)
+    {
+        this.customer_id = customer_id;
+        this.price = price;
+        this.p_name = p_name;
+        this.text_diff_task = text_diff_task;
+        this.logo = logo;
+        this.poster = poster;
+        this.webpage = webpage;
+        this.photoedit = photoedit;
+        this.menu_design = menu_design;
+        this.diffeerent_task = diffeerent_task;
+        this.bussinness_card = bussinness_card;
+        this.stored_online = stored_online;
+        this.paid = paid;
+        this.spent_hours = spent_hours;
+    }
 
     public int getProject_id() {
         return project_id;
@@ -45,12 +61,12 @@ public class Projects
         this.customer_id = customer_id;
     }
 
-    public int getPrice_id() {
-        return price_id;
+    public double getPrice() {
+        return price;
     }
 
-    public void setPrice_id(int price_id) {
-        this.price_id = price_id;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getP_name() {
