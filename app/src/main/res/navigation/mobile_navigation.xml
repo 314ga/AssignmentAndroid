@@ -3,41 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_projects">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.designernote.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_projects"
+        android:name="com.example.designernote.ui.home.ProjectFragment"
+        android:label="@string/menu_projects"
+        tools:layout="@layout/fragment_project" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.designernote.ui.createTask.CreateTaskFragment"
+        android:id="@+id/nav_create_task"
+        android:name="com.example.designernote.ui.createProject.CreateProjectFragment"
         android:label="@string/menu_create_task"
-        tools:layout="@layout/fragment_create_task" />
+        tools:layout="@layout/fragment_create_project" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_create_customer"
         android:name="com.example.designernote.ui.createCustomer.CreateCustomerFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_create_customer"
         tools:layout="@layout/fragment_create_customer" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.designernote.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:id="@+id/nav_gallery"
+        android:name="com.example.designernote.ui.gallery.GalleryFragment"
+        android:label="@string/menu_edit_project"
+        tools:layout="@layout/fragment_contact_customer" />
 
     <fragment
-        android:id="@+id/nav_share"
-        android:name="com.example.designernote.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+        android:id="@+id/nav_contact_customer"
+        android:name="com.example.designernote.ui.contactCustomer.ContactCustomerFragment"
+        android:label="@string/menu_contact_customer"
+        tools:layout="@layout/fragment_edit_project" />
 
     <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.designernote.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        android:id="@+id/nav_timer"
+        android:name="com.example.designernote.ui.timer.TimerFragment"
+        android:label="@string/menu_timer"
+        tools:layout="@layout/fragment_timer" />
 </navigation>

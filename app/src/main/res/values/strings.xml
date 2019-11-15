@@ -13,15 +13,15 @@
     <string name="backdrop_title">LOVE MUSIC</string>
     <string name="backdrop_subtitle">This season top 20 albums</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_create_task">Create new task</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
+    <string name="menu_projects">Projects</string>
+    <string name="menu_create_task">Create new project</string>
+    <string name="menu_create_customer">Create new customer</string>
+    <string name="menu_edit_project">Edit project</string>
+    <string name="menu_contact_customer">Contact customer</string>
     <string name="test">Test</string>
     <string name="project_costs">PROJECT COSTS</string>
     <string name="debt_costs">PROJECT DEBT</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_timer">Timer</string>
     <string name="login_button">Login</string>
     <string name="title_activity_login">Sign in</string>
     <string name="title_create_account">Create account</string>
@@ -35,5 +35,11 @@
     <string name="login_failed">"Login failed"</string>
     <string name="spinner_people">"Select Customer"</string>
     <string name="create_customer">"Create Customer"</string>
+    <string name="saved_online">"  Stored online"</string>
     <string name="save_online">"Save online"</string>
+    <string name="project_includes">"Project includes"</string>
+    <string name="total_project_price">"  Total project price"</string>
+    <string name="total_hours">"  Total hours"</string>
+    <string name="menu_gallery">"Gallery"</string>
+
 </resources>

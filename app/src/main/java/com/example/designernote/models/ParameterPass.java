@@ -9,7 +9,7 @@ public class ParameterPass {
     }
     public enum TaskName{
 
-        GETCUSTOMERNAMES, GETCUSTOMERID;
+        GETCUSTOMERNAMES, GETCUSTOMERID, GETBASICINFOPROJECTS;
 
     }
     public void setParameters(String[] parms)
@@ -29,6 +29,7 @@ public class ParameterPass {
     {
         task = TaskName.GETCUSTOMERNAMES;
     }
+
     public TaskName getTaskName()
     {
         return task;

@@ -7,13 +7,17 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 @Entity(indices = {@Index("project_id")},
         foreignKeys = {
         @ForeignKey(entity = Customers.class,
         parentColumns = "customer_id",
         childColumns = "customer_id",
         onDelete = ForeignKey.CASCADE)})
-public class Projects
+public class Projects implements Serializable
 {
     @NonNull
     @PrimaryKey(autoGenerate = true)
@@ -21,16 +25,18 @@ public class Projects
     private int project_id;
     private int customer_id;
     private String p_name, text_diff_task;
+    private ArrayList<String> image_path;
     private boolean logo, poster, webpage, photoedit, menu_design, diffeerent_task, bussinness_card, stored_online,
-    paid;
+    paid, done;
     private double spent_hours, price;
 
-    public Projects(int customer_id, double price, String p_name, String text_diff_task, boolean logo,
+    public Projects(int customer_id, double price, String p_name, String text_diff_task, ArrayList<String> image_path, boolean logo,
                     boolean poster, boolean webpage, boolean photoedit, boolean menu_design, boolean diffeerent_task,
-                    boolean bussinness_card, boolean stored_online, boolean paid, double spent_hours)
+                    boolean bussinness_card, boolean stored_online, boolean paid, boolean done, double spent_hours)
     {
         this.customer_id = customer_id;
         this.price = price;
+        this.image_path  = image_path;
         this.p_name = p_name;
         this.text_diff_task = text_diff_task;
         this.logo = logo;
@@ -42,6 +48,7 @@ public class Projects
         this.bussinness_card = bussinness_card;
         this.stored_online = stored_online;
         this.paid = paid;
+        this.done = done;
         this.spent_hours = spent_hours;
     }
 
@@ -163,5 +170,21 @@ public class Projects
 
     public void setSpent_hours(double spent_hours) {
         this.spent_hours = spent_hours;
+    }
+
+    public ArrayList<String> getImage_path() {
+        return image_path;
+    }
+
+    public void setImage_path(ArrayList<String> image_path) {
+        this.image_path = image_path;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
     }
 }

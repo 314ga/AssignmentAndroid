@@ -6,22 +6,26 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 
 
+import com.example.designernote.models.ParameterPass;
 import com.example.designernote.storageDB.ProjectDatabase;
 import com.example.designernote.storageDB.Projects;
 import com.example.designernote.storageDB.interfaces.ProjectsDao;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ProjectsRepo
 {
 
     private ProjectsDao projectsDao;
     private static ProjectsRepo instance;
+    private ParameterPass taskNames;
     private LiveData<List<Projects>> allProjects;
     ///creating variables needed later
 
     private ProjectsRepo(Application application) {
         ProjectDatabase database = ProjectDatabase.getInstance(application);
+        taskNames = new ParameterPass();
         projectsDao = database.projectsDao();
         allProjects = projectsDao.getAllProjects();
     }
@@ -37,11 +41,9 @@ public class ProjectsRepo
     public LiveData<List<Projects>> getAllItems(){
         return allProjects;
     }
-
     public void insert(Projects item) {
         new ProjectsRepo.InsertNoteAsync(projectsDao).execute(item);
     }
-
 
     public void deleteItem(){
         new ProjectsRepo.DeleteItemAsyncTask(projectsDao).execute();

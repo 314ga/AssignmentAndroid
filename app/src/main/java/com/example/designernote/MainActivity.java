@@ -7,10 +7,8 @@ import android.os.Bundle;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.signature.ObjectKey;
-import com.example.designernote.ui.createTask.CreateTaskFragment;
 import com.example.designernote.ui.login.LoginActivity;
 import com.example.designernote.ui.settings.SettingActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import android.view.MenuItem;
 import android.view.View;
@@ -49,12 +47,12 @@ public class MainActivity extends AppCompatActivity{
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private String cacheImageNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-
         cacheImageNumber = getCacheImageNumber();
         setSupportActionBar(toolbar);
         mAuth = FirebaseAuth.getInstance();
@@ -75,20 +73,12 @@ public class MainActivity extends AppCompatActivity{
 
             }
         };
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new CreateTaskFragment()).commit();
-            }
-        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                R.id.nav_projects, R.id.nav_create_task, R.id.nav_create_customer,
+                R.id.nav_gallery, R.id.nav_contact_customer, R.id.nav_timer)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
