@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +18,11 @@ import androidx.core.content.ContextCompat;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.designernote.MainActivity;
+import com.example.designernote.EditProjectActivity;
 import com.example.designernote.R;
 import com.example.designernote.ViewProjectActivity;
 import com.example.designernote.modules.ImageToISModule;
 import com.example.designernote.storageDB.Projects;
-import com.example.designernote.ui.settings.SettingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,13 +69,17 @@ public class ProjectCardAdapter extends RecyclerView.Adapter<ProjectCardAdapter.
         {
             ImageToISModule imageToISModule = new ImageToISModule();
             ArrayList<String> images = projects.get(position).getImage_path();
-            image = imageToISModule.loadImageFromStorage(images.get(0));
+            image = imageToISModule.loadImageFromStorage(images.get(0),context);
             holder.personImage.setImageBitmap(image);
         }
-        setDesignColor(holder, getColorsFromImage(image));
+         if(image != null)
+            setDesignColor(holder, getColorsFromImage(image));
 
         holder.projectName.setText(projects.get(position).getP_name());
         holder.projectPrice.setText("" + projects.get(position).getPrice());
+        if(projects.get(position).isDone())
+            holder.doneButton.setImageDrawable(ContextCompat.getDrawable(holder.projectName.getContext(), R.drawable.ic_check_black_24dp));
+
         holder.personImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +93,15 @@ public class ProjectCardAdapter extends RecyclerView.Adapter<ProjectCardAdapter.
             public void onClick(View v) {
                 Projects project = projects.get(position);
                 Intent intent = new Intent(context, ViewProjectActivity.class);
+                intent.putExtra("Projects", project);
+                context.startActivity(intent);
+            }
+        });
+        holder.editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Projects project = projects.get(position);
+                Intent intent = new Intent(context, EditProjectActivity.class);
                 intent.putExtra("Projects", project);
                 context.startActivity(intent);
             }
@@ -128,7 +139,7 @@ public class ProjectCardAdapter extends RecyclerView.Adapter<ProjectCardAdapter.
     {
         GradientDrawable gradient = new GradientDrawable(
                 GradientDrawable.Orientation.LEFT_RIGHT,
-                new int[] {colors[1],(colors[1] & 0x00FFFFFF) | 0x99000000, (colors[1] & 0x00FFFFFF) | 0x40000000});
+                new int[] {colors[1],(colors[1] & 0x00FFFFFF) | 0xF2000000,(colors[1] & 0x00FFFFFF) | 0xCC000000, (colors[1] & 0x00FFFFFF) | 0x40000000});
         gradient.setCornerRadius(0f);
         holder.gradientLayout.setForeground(gradient);
         holder.cardBackground.setBackgroundColor(colors[1]);
@@ -142,13 +153,13 @@ public class ProjectCardAdapter extends RecyclerView.Adapter<ProjectCardAdapter.
 
         Palette p = Palette.from(bitmap).generate();
         int[] colors = new int[2];
-        Palette.Swatch vibrantSwatch = p.getDarkVibrantSwatch();
+        Palette.Swatch vibrantSwatch = p.getDominantSwatch();
         colors[0] = 0xFFFFFFFF;
         colors[1] = 0xFF000000;
         // Check that the Vibrant swatch is available
         if(vibrantSwatch != null) {
-            colors[0] = vibrantSwatch.getTitleTextColor();
             colors[1] = vibrantSwatch.getRgb();
+            colors[0] = vibrantSwatch.getBodyTextColor();
         }
         return colors;
     }

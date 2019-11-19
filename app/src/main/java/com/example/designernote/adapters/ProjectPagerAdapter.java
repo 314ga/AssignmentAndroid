@@ -74,9 +74,10 @@ public class ProjectPagerAdapter extends PagerAdapter {
     }
     private Bitmap getImageAt(int position)
     {
+        //TODO:IMAGE NAMING
         /////image naming: {ProjectID}_{logo/poster..}_{numberOfImage}.jpg
         Bitmap image = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
-        if(position>imagePaths.size() && hasSomeImages)
+        if(position<=imagePaths.size() && hasSomeImages)
         {
             image = getImageFromPath(imagePaths.get(position));
             setImageLoadedFor(getImageTypeFromPath(imagePaths.get(position)));
@@ -119,7 +120,7 @@ public class ProjectPagerAdapter extends PagerAdapter {
 
     private Bitmap getImageFromPath(String path)
     {
-       return imageToISModule.loadImageFromStorage(path);
+       return imageToISModule.loadImageFromStorage(path,context);
     }
 
     private Bitmap getDefaultImage(int imageNumber)
@@ -205,7 +206,6 @@ public class ProjectPagerAdapter extends PagerAdapter {
                 {
                    differentImages++;
                    tempValue = imageType;
-                   break;
                 }
             }
         }

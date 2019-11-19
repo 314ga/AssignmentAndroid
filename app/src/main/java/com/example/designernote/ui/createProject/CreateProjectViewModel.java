@@ -12,7 +12,7 @@ public class CreateProjectViewModel extends ViewModel {
     public CreateProjectViewModel() {
         createTask = new MutableLiveData<>();
         String[] checkBoxes = {"Business card", "Logo", "Poster", "Web page", "Photo edit", "Menu design", "Different task"};
-        CreateTask createTaskObj = new CreateTask("Choose customer:","Project name","Save online","Type of the work:", "Create task", checkBoxes);
+        CreateTask createTaskObj = new CreateTask("Choose customer:","Write project name","Save online","Type of the work:", "Create task", checkBoxes);
         createTask.setValue(createTaskObj);
     }
 

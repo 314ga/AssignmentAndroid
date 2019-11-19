@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import com.example.designernote.storageDB.Projects;
 import com.example.designernote.storageDB.repositories.ProjectsRepo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectsViewModel extends AndroidViewModel {
@@ -28,6 +29,11 @@ public class ProjectsViewModel extends AndroidViewModel {
     public void insert(final Projects projects)
     {
         projectsRepo.insert(projects);
+    }
+
+    public void updateImagePath(ArrayList<String> path, int id)
+    {
+        projectsRepo.changeImagePath(path,id);
     }
 }
 

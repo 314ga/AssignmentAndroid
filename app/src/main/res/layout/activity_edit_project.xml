@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/gradient_background"
+    android:layout_height="match_parent"
+    android:weightSum="4"
+    android:orientation="vertical"
+    tools:context=".EditProjectActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/idEditRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:weightSum="6"
+        android:orientation="vertical"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:id="@+id/hoursLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:weightSum="6">
+
+            <ImageView
+                android:id="@+id/imageHours"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_total_time">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/hoursText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:text="@string/total_hours">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/hoursValueText"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:hint="@string/time_hint"
+                android:textColorHint="@color/hintText"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/lightBlue"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+            </EditText>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ePriceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:weightSum="6">
+
+            <ImageView
+                android:id="@+id/eImagePrice"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_euro"></ImageView>
+
+            <TextView
+                android:id="@+id/ePriceText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:gravity="center_vertical"
+                android:text="@string/total_project_price"
+                android:textSize="20sp"></TextView>
+
+            <EditText
+                android:id="@+id/ePriceValueText"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:hint="@string/euro_hint"
+                android:textColorHint="@color/hintText"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/lightBlue"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+            </EditText>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/storedOnlineLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <ImageView
+                android:id="@+id/imageStorageOnline"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_storage_black_24dp">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/saveOnlineText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_weight="4"
+                android:text="@string/saved_online">
+
+            </TextView>
+            <Switch
+                android:id="@+id/imageStorageState"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="match_parent">
+
+            </Switch>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/amountPerHour"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <TextView
+                android:id="@+id/amountPerHourIcon"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:text="@string/amount_per_hour"
+                android:layout_height="match_parent">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/amountPerHourText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_weight="4"
+                android:text="@string/amount_per_hour_text">
+
+            </TextView>
+            <EditText
+                android:id="@+id/amountPerHourValue"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:hint="@string/amount_per_hour_hint"
+                android:textColorHint="@color/hintText"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/lightBlue"
+                android:gravity="center"
+                android:layout_height="match_parent">
+
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/eDone"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:src="@drawable/ic_doneicon"
+                android:layout_height="match_parent">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/doneText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_weight="4"
+                android:text="@string/done_project">
+
+            </TextView>
+            <Switch
+                android:id="@+id/doneProjectSwitch"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="match_parent">
+
+            </Switch>
+        </LinearLayout>
+        <LinearLayout
+        android:id="@+id/ePaid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:src="@drawable/ic_paidlogo"
+            android:layout_height="match_parent">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/paidText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:layout_weight="4"
+            android:text="@string/paid_project">
+
+        </TextView>
+        <Switch
+            android:id="@+id/paidProjectSwitch"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="match_parent">
+
+        </Switch>
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

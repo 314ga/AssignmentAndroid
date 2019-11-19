@@ -127,7 +127,7 @@ public class CreateProjectFragment extends Fragment {
 
     private void setCustomerToSpinner(Spinner spinner, List<String> customerNames)
     {
-        ArrayAdapter<String> adp1 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, customerNames);
+        ArrayAdapter<String> adp1 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, customerNames);
         adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adp1);
     }

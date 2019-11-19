@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,11 +20,10 @@ public class ImageToISModule {
         // path to /data/data/yourapp/app_data/DesignerNote
         File directory = cw.getDir("DesignerNote", Context.MODE_PRIVATE);
         File mypath=new File(directory,imageName + ".jpg");
-
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(mypath);
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 1, fos);
             return "Image successfully saved";
         } catch (Exception e) {
             e.printStackTrace();
@@ -36,12 +36,14 @@ public class ImageToISModule {
             }
         }
     }
-    public Bitmap loadImageFromStorage(String path)
+    public Bitmap loadImageFromStorage(String path, Context context)
     {
 
         try {
-            File f = new File(path);
-            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            ContextWrapper cw = new ContextWrapper(context);
+            File directory = cw.getDir("DesignerNote", Context.MODE_PRIVATE);
+            File mypath=new File(directory ,path);
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(mypath));
             return b;
         }
         catch (FileNotFoundException e)

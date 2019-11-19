@@ -41,5 +41,12 @@
     <string name="total_project_price">"  Total project price"</string>
     <string name="total_hours">"  Total hours"</string>
     <string name="menu_gallery">"Gallery"</string>
+    <string name="time_hint">"00:00"</string>
+    <string name="euro_hint">"0 €"</string>
+    <string name="amount_per_hour">"€/h"</string>
+    <string name="amount_per_hour_text">"  Amount per hour"</string>
+    <string name="amount_per_hour_hint">"00.00"</string>
+    <string name="paid_project">"  Set paid project"</string>
+    <string name="done_project">"  Set project done"</string>
 
 </resources>

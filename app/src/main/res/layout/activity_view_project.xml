@@ -157,47 +157,6 @@
     </LinearLayout>
 
 
-    <LinearLayout
-        android:id="@+id/storedOnlineLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:weightSum="6"
-        app:layout_constraintBottom_toTopOf="@+id/priceLayout"
-        app:layout_constraintEnd_toStartOf="@+id/right_margin"
-        app:layout_constraintStart_toStartOf="@+id/left_margin"
-        app:layout_constraintTop_toTopOf="@+id/fourth_guide">
-
-        <ImageView
-            android:id="@+id/imageStorageOnline"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_storage_black_24dp">
-
-        </ImageView>
-
-        <TextView
-            android:id="@+id/saveOnlineText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:gravity="center_vertical"
-            android:layout_weight="4"
-            android:text="@string/saved_online">
-
-        </TextView>
-        <ImageView
-            android:id="@+id/imageStorageState"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_close_black_24dp">
-
-        </ImageView>
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/priceLayout"
@@ -208,7 +167,7 @@
         app:layout_constraintBottom_toTopOf="@+id/hoursLayout"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
-        app:layout_constraintTop_toBottomOf="@+id/storedOnlineLayout">
+        app:layout_constraintTop_toBottomOf="@+id/fourth_guide">
 
         <ImageView
             android:id="@+id/imagePrice"
@@ -244,7 +203,7 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:weightSum="6"
-        app:layout_constraintBottom_toTopOf="@+id/seventh_guide"
+        app:layout_constraintBottom_toTopOf="@+id/storedOnlineLayout"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
         app:layout_constraintTop_toBottomOf="@+id/priceLayout">
@@ -284,6 +243,47 @@
         </TextView>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/storedOnlineLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="6"
+        app:layout_constraintBottom_toTopOf="@+id/seventh_guide"
+        app:layout_constraintEnd_toStartOf="@+id/right_margin"
+        app:layout_constraintStart_toStartOf="@+id/left_margin"
+        app:layout_constraintTop_toBottomOf="@+id/hoursLayout">
+
+        <ImageView
+            android:id="@+id/imageStorageOnline"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_storage_black_24dp">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/saveOnlineText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:layout_weight="4"
+            android:text="@string/saved_online">
+
+        </TextView>
+        <ImageView
+            android:id="@+id/imageStorageState"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_close_black_24dp">
+
+        </ImageView>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/isDoneLayout"

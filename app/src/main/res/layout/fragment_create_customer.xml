@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@drawable/gradient_background"
     android:layout_height="match_parent">
 
     <!--margins-->
@@ -37,6 +38,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="First Name"
+        android:textColorHint="@color/hintText"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/third_guide"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
@@ -48,6 +51,8 @@
         android:id="@+id/lastName"
         android:layout_width="0dp"
         android:hint="Last Name"
+        android:textColorHint="@color/hintText"
+        android:backgroundTint="@color/white"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
@@ -58,6 +63,8 @@
         android:id="@+id/emailCreateCustomer"
         android:layout_width="0dp"
         android:hint="Email"
+        android:textColorHint="@color/hintText"
+        android:backgroundTint="@color/white"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
@@ -67,6 +74,8 @@
     <EditText
         android:id="@+id/phoneNumber"
         android:layout_width="0dp"
+        android:textColorHint="@color/hintText"
+        android:backgroundTint="@color/white"
         android:layout_height="wrap_content"
         android:hint="Phone number"
         app:layout_constraintBottom_toTopOf="@+id/third_guide"
@@ -80,6 +89,7 @@
         android:id="@+id/saveOnlineCustomer"
         android:layout_width="wrap_content"
         android:text="@string/save_online"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
@@ -92,6 +102,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/create_customer"
+        android:background="@drawable/button_design"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumber">

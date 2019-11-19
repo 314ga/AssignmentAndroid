@@ -1,25 +1,18 @@
 package com.example.designernote;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.designernote.adapters.ProjectCardAdapter;
 import com.example.designernote.adapters.ProjectPagerAdapter;
 import com.example.designernote.storageDB.Projects;
-import com.example.designernote.storageDB.viewModel.ProjectsViewModel;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class ViewProjectActivity extends AppCompatActivity {
 

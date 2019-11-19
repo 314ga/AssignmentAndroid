@@ -3,55 +3,58 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
 
     <!--margins-->
     <androidx.constraintlayout.widget.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/left_margin"
-        app:layout_constraintGuide_percent=".04"
-        android:orientation="vertical"/>
-    <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".04" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/right_margin"
-        app:layout_constraintGuide_percent=".95"
-        android:orientation="vertical"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".95" />
     <!--top-->
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/top_margin"
-        app:layout_constraintGuide_percent=".03"
-        android:orientation="horizontal"/>
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".03" />
     <!--bottom-->
     <androidx.constraintlayout.widget.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/bottom_margin"
-        app:layout_constraintGuide_percent=".97"
-        android:orientation="horizontal"/>
-
-    <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".97" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/first_guide"
-        app:layout_constraintGuide_percent=".30"
-        android:orientation="horizontal"/>
-    <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/second_guide"
-        app:layout_constraintGuide_percent=".60"
-        android:orientation="horizontal"/>
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".30" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/second_guide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".60" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/third_guide"
-        app:layout_constraintGuide_percent=".80"
-        android:orientation="horizontal"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".80" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -70,7 +73,7 @@
             android:id="@+id/imageButton"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/ic_home"
+            android:background="@drawable/ic_add_a_photo"
             android:scaleType="fitCenter" />
     </LinearLayout>
 
@@ -78,9 +81,8 @@
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:gravity="center"
-        android:background="@color/colorAccent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/first_guide"
         app:layout_constraintHorizontal_weight="7"
         app:layout_constraintLeft_toRightOf="@+id/linearLayout1"
@@ -89,17 +91,20 @@
 
         <EditText
             android:id="@+id/projectName"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName" />
+            android:textColorHint="@color/hintText"
+            android:backgroundTint="@color/white"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/personSelection"
             android:layout_width="match_parent"
-            android:gravity="center"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:textColor="@color/white"
             android:textSize="20sp">
 
         </TextView>
@@ -107,7 +112,9 @@
         <Spinner
             android:id="@+id/spinnerPeople"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@color/white">
 
         </Spinner>
 
@@ -119,6 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:gravity="center"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
@@ -129,41 +137,51 @@
         android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:buttonTint="@color/white"
         android:text="CheckBox"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/checkBox4"
+        app:layout_constraintEnd_toStartOf="@id/checkBox2"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
-        app:layout_constraintTop_toBottomOf="@+id/chooseTypeOfWork"
-        app:layout_constraintEnd_toStartOf="@id/checkBox2"/>
-
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CheckBox"
-        app:layout_constraintBottom_toTopOf="@+id/checkBox5"
-        app:layout_constraintStart_toEndOf="@+id/checkBox1"
-        app:layout_constraintEnd_toStartOf="@id/checkBox3"
-        app:layout_constraintTop_toBottomOf="@+id/chooseTypeOfWork">
-
-    </CheckBox>
+        app:layout_constraintTop_toBottomOf="@+id/chooseTypeOfWork" />
 
     <CheckBox
         android:id="@+id/checkBox3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:buttonTint="@color/white"
         android:text="CheckBox"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/checkBox6"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toEndOf="@+id/checkBox2"
         app:layout_constraintTop_toBottomOf="@+id/chooseTypeOfWork" />
 
     <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/white"
+        android:text="CheckBox"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/checkBox5"
+        app:layout_constraintEnd_toStartOf="@id/checkBox3"
+        app:layout_constraintStart_toEndOf="@+id/checkBox1"
+        app:layout_constraintTop_toBottomOf="@+id/chooseTypeOfWork">
+
+    </CheckBox>
+
+    <CheckBox
         android:id="@+id/checkBox4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:buttonTint="@color/white"
         android:text="CheckBox"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/second_guide"
         app:layout_constraintEnd_toStartOf="@id/checkBox5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
         app:layout_constraintTop_toBottomOf="@+id/checkBox1" />
 
@@ -171,7 +189,9 @@
         android:id="@+id/checkBox5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:buttonTint="@color/white"
         android:text="CheckBox"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/second_guide"
         app:layout_constraintEnd_toStartOf="@id/checkBox6"
         app:layout_constraintStart_toEndOf="@+id/checkBox4"
@@ -181,7 +201,9 @@
         android:id="@+id/checkBox6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:buttonTint="@color/white"
         android:text="CheckBox"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/second_guide"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toEndOf="@+id/checkBox5"
@@ -191,7 +213,9 @@
         android:id="@+id/checkBox7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:buttonTint="@color/white"
         android:text="CheckBox"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/third_guide"
         app:layout_constraintEnd_toStartOf="@+id/ownTaskEditText"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
@@ -201,6 +225,8 @@
         android:id="@+id/ownTaskEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/third_guide"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toEndOf="@+id/checkBox7"
@@ -212,6 +238,8 @@
         android:id="@+id/createTaskBut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_design"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
         app:layout_constraintTop_toTopOf="@+id/third_guide">
@@ -222,6 +250,9 @@
         android:id="@+id/saveOnline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
         app:layout_constraintTop_toBottomOf="@+id/createTaskBut">

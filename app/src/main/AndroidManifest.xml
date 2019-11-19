@@ -16,16 +16,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewProjectActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity">
-        </activity>
+        <activity android:name=".EditProjectActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ViewProjectActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ui.settings.SettingActivity"
             android:label="Settings"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".ui.login.CreateAccount" />
-
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login">
@@ -38,7 +40,8 @@
         <activity
             android:name=".MainActivity"
             android:label="DesginerNote"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
