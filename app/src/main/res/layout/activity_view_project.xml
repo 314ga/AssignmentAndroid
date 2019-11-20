@@ -102,7 +102,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/app_name"
+        android:text="customer"
         android:textSize="20sp"
         android:textColor="@color/lightBlue"
         app:layout_constraintTop_toBottomOf="@+id/projectNameTextView"
@@ -162,8 +162,9 @@
         android:id="@+id/priceLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="6"
+        android:weightSum="5"
         app:layout_constraintBottom_toTopOf="@+id/hoursLayout"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
@@ -174,26 +175,17 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/ic_euro"></ImageView>
-
-        <TextView
-            android:id="@+id/priceText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:gravity="center_vertical"
-            android:text="@string/total_project_price"
-            android:textSize="20sp"></TextView>
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/ic_total_amount"></ImageView>
 
         <TextView
             android:id="@+id/priceValueText"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textColor="@color/lightBlue"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:layout_marginRight="40dp"
+            android:layout_weight="4"
+            android:gravity="center_vertical|right"
             android:text="@string/app_name"
             android:textSize="20sp"></TextView>
     </LinearLayout>
@@ -202,7 +194,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:weightSum="6"
+        android:weightSum="5"
         app:layout_constraintBottom_toTopOf="@+id/storedOnlineLayout"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
@@ -213,30 +205,19 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/ic_total_time">
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/ic_total_hours">
 
         </ImageView>
 
         <TextView
-            android:id="@+id/hoursText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:gravity="center_vertical"
-            android:text="@string/total_hours">
-
-        </TextView>
-
-        <TextView
             android:id="@+id/hoursValueText"
             android:layout_width="0dp"
-            android:gravity="center"
+            android:gravity="center_vertical|right"
             android:textColor="@color/lightBlue"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_marginRight="40dp"
+            android:layout_weight="4"
             android:textSize="20sp"
             android:text="@string/app_name">
 
@@ -248,7 +229,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:weightSum="6"
+        android:weightSum="5"
         app:layout_constraintBottom_toTopOf="@+id/seventh_guide"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
@@ -258,31 +239,22 @@
             android:id="@+id/imageStorageOnline"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_marginLeft="30dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_storage_black_24dp">
+            android:src="@drawable/ic_save_online">
 
         </ImageView>
 
-        <TextView
-            android:id="@+id/saveOnlineText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:gravity="center_vertical"
-            android:layout_weight="4"
-            android:text="@string/saved_online">
+            <ImageView
+                android:id="@+id/imageStorageState"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_marginRight="30dp"
+                android:scaleType="fitEnd"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_close_black_24dp">
 
-        </TextView>
-        <ImageView
-            android:id="@+id/imageStorageState"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_close_black_24dp">
-
-        </ImageView>
+            </ImageView>
     </LinearLayout>
 
     <LinearLayout

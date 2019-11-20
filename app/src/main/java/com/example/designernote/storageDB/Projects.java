@@ -28,11 +28,11 @@ public class Projects implements Serializable
     private ArrayList<String> image_path;
     private boolean logo, poster, webpage, photoedit, menu_design, diffeerent_task, bussinness_card, stored_online,
     paid, done;
-    private double spent_hours, price;
+    private double spent_hours, price, amountPerHour;
 
     public Projects(int customer_id, double price, String p_name, String text_diff_task, ArrayList<String> image_path, boolean logo,
                     boolean poster, boolean webpage, boolean photoedit, boolean menu_design, boolean diffeerent_task,
-                    boolean bussinness_card, boolean stored_online, boolean paid, boolean done, double spent_hours)
+                    boolean bussinness_card, boolean stored_online, boolean paid, boolean done, double spent_hours, double amountPerHour)
     {
         this.customer_id = customer_id;
         this.price = price;
@@ -50,6 +50,7 @@ public class Projects implements Serializable
         this.paid = paid;
         this.done = done;
         this.spent_hours = spent_hours;
+        this.amountPerHour = amountPerHour;
     }
 
     public int getProject_id() {
@@ -186,5 +187,13 @@ public class Projects implements Serializable
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    public double getAmountPerHour() {
+        return amountPerHour;
+    }
+
+    public void setAmountPerHour(double amountPerHour) {
+        this.amountPerHour = amountPerHour;
     }
 }

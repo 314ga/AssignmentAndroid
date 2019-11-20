@@ -1,6 +1,7 @@
 package com.example.designernote;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -50,6 +51,13 @@ public class ViewProjectActivity extends AppCompatActivity {
         tasksText.setText(getTaskString(tasks));
         priceText.setText(String.valueOf(project.getPrice()));
         hoursText.setText(String.valueOf(project.getSpent_hours()));
+
+        if(project.isDone())
+            finsihed.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_check_black_24dp));
+        if(project.isStored_online())
+            savedOnline.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_check_black_24dp));
+        if(project.isPaid())
+            paid.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_check_black_24dp));
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

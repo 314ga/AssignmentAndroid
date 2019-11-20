@@ -35,5 +35,15 @@ public class ProjectsViewModel extends AndroidViewModel {
     {
         projectsRepo.changeImagePath(path,id);
     }
+
+    public void updateProject(int id, double hours, double price,double amountPerHour, boolean projectDone, boolean paidProject, boolean storedOnline)
+    {
+        projectsRepo.updateProject(id, hours, price,amountPerHour,projectDone,paidProject, storedOnline);
+    }
+
+     public void updateTasks(int id,ArrayList<Boolean> tasks)
+     {
+         projectsRepo.updateTasks(tasks,id);
+     }
 }
 

@@ -9,4 +9,19 @@
     <color name="hintText">#757F8B</color>
     <color name="lightBlue">#92B8D3</color>
     <color name="album_title">#4c4c4c</color>
+    <color name="my_app_color_on_error">#CC0000</color>
+        <color name="my_app_color_on_background">#e2e5e6</color>
+        <color name="mcgpalette0_100">#b7bfc1</color>
+        <color name="mcgpalette0_200">#879598</color>
+        <color name="my_app_secondary_variant_color">#566a6f</color>
+        <color name="mcgpalette0_400">#324a50</color>
+        <color name="mcgpalette0_500">#0e2a31</color>
+        <color name="my_app_color_on_primary">#0c252c</color>
+        <color name="mcgpalette0_700">#0a1f25</color>
+        <color name="my_app_surface_color">#08191f</color>
+        <color name="mcgpalette0_900">#040f13</color>
+        <color name="my_app_color_on_surface">#54c6ff</color>
+        <color name="mcgpalette0_A200">#21b5ff</color>
+        <color name="mcgpalette0_A400">#009eed</color>
+        <color name="my_app_color_on_secondary">#008dd4</color>
 </resources>

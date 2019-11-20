@@ -10,6 +10,11 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.designernote.adapters.EditProjectCardAdapter;
@@ -35,6 +40,10 @@ public class EditProjectActivity extends AppCompatActivity implements OnAddImage
     private ArrayList<String> imgPaths;
     private int id;
     private List<Tasks> tasks;
+    Switch projectDone, projectPaid, storedOnline;
+    EditText hoursValueText,ePriceValueText,amountPerHourValue;
+    Button saveChanges;
+    TextView eCustomerName,eProjectName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +53,15 @@ public class EditProjectActivity extends AppCompatActivity implements OnAddImage
         imageToISModule = new ImageToISModule();
         projectsViewModel = ViewModelProviders.of(this).get(ProjectsViewModel.class);
         mRecyclerView = (RecyclerView) findViewById(R.id.idEditRecyclerView);
+        saveChanges = findViewById(R.id.saveChangesBtn);
+        amountPerHourValue = findViewById(R.id.amountPerHour);
+        ePriceValueText = findViewById(R.id.ePriceValueText);
+        hoursValueText = findViewById(R.id.hoursValueText);
+        projectDone = findViewById(R.id.doneProjectSwitch);
+        projectPaid = findViewById(R.id.paidProjectSwitch);
+        storedOnline = findViewById(R.id.SwitchStorageState);
+        eCustomerName = findViewById(R.id.eCustomerName);
+        eProjectName = findViewById(R.id.eProjectName);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         tasks = new ArrayList<>();
 
@@ -56,8 +74,18 @@ public class EditProjectActivity extends AppCompatActivity implements OnAddImage
                 addTaskToTasks("businessCard",project.isBussinness_card(), "Business card");
 
         mAdapter = new EditProjectCardAdapter(tasks,getApplicationContext(),project);
-        mAdapter.setOnDeleteListener(this);
+        mAdapter.setOnTaskListener(this);
         mRecyclerView.setAdapter(mAdapter);
+        setItemsByData();
+        saveChanges.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                   projectsViewModel.updateProject(project.getProject_id(),Double.parseDouble(hoursValueText.getText().toString()),
+                            Double.parseDouble(ePriceValueText.getText().toString()),Double.parseDouble(amountPerHourValue.getText().toString()),
+                            projectDone.isChecked(),projectPaid.isChecked(),storedOnline.isChecked());
+                }
+            });
     }
 
     private ArrayList<Bitmap> getImagesByType(String img)
@@ -109,6 +137,11 @@ public class EditProjectActivity extends AppCompatActivity implements OnAddImage
         openFileChooser();
     }
 
+    @Override
+    public void onTaskChange(ArrayList<Boolean> tasks)
+    {
+        projectsViewModel.updateTasks(project.getProject_id(),tasks);
+    }
 
     private void openFileChooser()
     {
@@ -146,4 +179,18 @@ public class EditProjectActivity extends AppCompatActivity implements OnAddImage
         }
     }
 
+    private void setItemsByData()
+    {
+        eProjectName.setText(project.getP_name());
+        eCustomerName.setText("customer");
+        amountPerHourValue.setText(project.getAmountPerHour() + "");
+        ePriceValueText.setText(project.getPrice() + "");
+        hoursValueText.setText(project.getSpent_hours() + "");
+        if(project.isDone())
+         projectDone.setChecked(true);
+        if(project.isPaid())
+         projectPaid.setChecked(true);
+        if(project.isStored_online())
+            storedOnline.setChecked(true);
+    }
 }

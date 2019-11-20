@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -145,6 +147,13 @@ public class ProjectCardAdapter extends RecyclerView.Adapter<ProjectCardAdapter.
         holder.cardBackground.setBackgroundColor(colors[1]);
         holder.projectName.setTextColor(colors[0]);
         holder.projectPrice.setTextColor(colors[0]);
+        PorterDuffColorFilter porterDuffColorFilter = new PorterDuffColorFilter(colors[0],
+                PorterDuff.Mode.SRC_ATOP);
+
+        holder.doneButton.setColorFilter(porterDuffColorFilter);
+        holder.editButton.setColorFilter(porterDuffColorFilter);
+        holder.deleteButton.setColorFilter(porterDuffColorFilter);
+        holder.viewButton.setColorFilter(porterDuffColorFilter);
     }
 
 
@@ -163,4 +172,5 @@ public class ProjectCardAdapter extends RecyclerView.Adapter<ProjectCardAdapter.
         }
         return colors;
     }
+
 }

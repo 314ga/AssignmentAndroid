@@ -7,5 +7,6 @@ import java.util.ArrayList;
 
 public interface OnAddImageInterface {
 
-    public void onImageSet(String imageName, ArrayList<String> imagePaths, int id);
+    void onImageSet(String imageName, ArrayList<String> imagePaths, int id);
+    void onTaskChange(ArrayList<Boolean> tasks);
 }

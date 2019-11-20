@@ -95,7 +95,7 @@ public class CreateProjectFragment extends Fragment {
 
                 Projects project = new Projects(Integer.parseInt(customer.get(0)), 0.0, projectNameTextView.getText().toString(),differentTask,fileDirs, checkBox2.isChecked(),
                         checkBox3.isChecked(), checkBox4.isChecked(), checkBox5.isChecked(), checkBox6.isChecked(), checkBox7.isChecked(), checkBox1.isChecked(), false,
-                        false,false, 0.0);
+                        false,false, 0.0,0.0);
 
                 if (saveOnlineProject.isChecked())
                 {

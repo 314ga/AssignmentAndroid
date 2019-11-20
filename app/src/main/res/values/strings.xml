@@ -38,15 +38,19 @@
     <string name="saved_online">"  Stored online"</string>
     <string name="save_online">"Save online"</string>
     <string name="project_includes">"Project includes"</string>
-    <string name="total_project_price">"  Total project price"</string>
+    <string name="hours">"h"</string>
     <string name="total_hours">"  Total hours"</string>
     <string name="menu_gallery">"Gallery"</string>
     <string name="time_hint">"00:00"</string>
-    <string name="euro_hint">"0 €"</string>
+    <string name="euro_hint">"00.00"</string>
     <string name="amount_per_hour">"€/h"</string>
     <string name="amount_per_hour_text">"  Amount per hour"</string>
     <string name="amount_per_hour_hint">"00.00"</string>
     <string name="paid_project">"  Set paid project"</string>
     <string name="done_project">"  Set project done"</string>
+    <string name="save_changes">" Save changes "</string>
+    <string name="euros">" € "</string>
+    <string name="eurosPerHour">" €/h "</string>
+
 
 </resources>

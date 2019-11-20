@@ -50,11 +50,27 @@ public class ProjectsRepo
 
     public void changeImagePath(ArrayList<String> path, int id)
     {
-        Log.v("FuckingFucker", id + "asfffffffffffffffffff");
         Projects project = new Projects(0,0,"","",path,false,false,false,false,false,
-                false,false,false,false,false,0);
+                false,false,false,false,false,0,0.0);
         project.setProject_id(id);
         new ProjectsRepo.UpdateImagePath(projectsDao).execute(project);
+    }
+
+    public void updateProject(int id, double hours, double price,double amountPerHour, boolean projectDone, boolean paidProject,boolean storedOnline)
+    {
+        Projects project = new Projects(0,price,"","",null,false,false,false,false,false,
+                false,false,storedOnline,paidProject,projectDone,hours,amountPerHour);
+        project.setProject_id(id);
+        new ProjectsRepo.UpdateProject(projectsDao).execute(project);
+    }
+
+    public void updateTasks(ArrayList<Boolean> tasks, int id)
+    {
+        Projects project = new Projects(0,0.0,"","",null,tasks.get(0),
+                tasks.get(1),tasks.get(2),tasks.get(3),tasks.get(4),
+                tasks.get(5),tasks.get(6),false,false,false,0.0,0.0);
+        project.setProject_id(id);
+        new ProjectsRepo.UpdateProjectTasks(projectsDao).execute(project);
     }
 
     public void deleteItem(){
@@ -87,6 +103,34 @@ public class ProjectsRepo
         }
     }
 
+    private static class UpdateProject extends AsyncTask<Projects,Void,Void> {
+        private ProjectsDao itemDao;
+        private UpdateProject(ProjectsDao itemDao) {
+            this.itemDao = itemDao;
+        }
+
+        @Override
+        protected Void doInBackground(Projects... listItem) {
+            itemDao.updateProject(listItem[0].getProject_id(), listItem[0].getSpent_hours(),
+                    listItem[0].getPrice(),listItem[0].getAmountPerHour(), listItem[0].isDone(),listItem[0].isPaid());
+            return null;
+        }
+    }
+
+    private static class UpdateProjectTasks extends AsyncTask<Projects,Void,Void> {
+        private ProjectsDao itemDao;
+        private UpdateProjectTasks(ProjectsDao itemDao) {
+            this.itemDao = itemDao;
+        }
+
+        @Override
+        protected Void doInBackground(Projects... listItem) {
+            itemDao.updateProjectTasks(listItem[0].getProject_id(), listItem[0].isLogo(),
+                    listItem[0].isPoster(),listItem[0].isWebpage(), listItem[0].isPhotoedit(),
+                    listItem[0].isMenu_design(),listItem[0].isBussinness_card(),listItem[0].isDiffeerent_task(),listItem[0].isStored_online());
+            return null;
+        }
+    }
 
     private static class DeleteItemAsyncTask extends AsyncTask<Projects, Void, Void> {
 

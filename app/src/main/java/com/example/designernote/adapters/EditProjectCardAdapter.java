@@ -14,8 +14,10 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,8 +36,6 @@ import com.example.designernote.ViewProjectActivity;
 import com.example.designernote.models.Tasks;
 import com.example.designernote.modules.ImageToISModule;
 import com.example.designernote.storageDB.Projects;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,7 @@ public class EditProjectCardAdapter extends RecyclerView.Adapter<EditProjectCard
         this.project = project;
     }
 
-    public void setOnDeleteListener(OnAddImageInterface onAddImageInterface) {
+    public void setOnTaskListener(OnAddImageInterface onAddImageInterface) {
         this.onAddImageInterface = onAddImageInterface;
     }
     @Override
@@ -82,7 +83,7 @@ public class EditProjectCardAdapter extends RecyclerView.Adapter<EditProjectCard
                     holder.firstTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(0));
                     holder.secondTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(1));
                 }
-                else
+                else if(imageCount == 3)
                 {
                     holder.firstTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(0));
                     holder.secondTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(1));
@@ -91,20 +92,18 @@ public class EditProjectCardAdapter extends RecyclerView.Adapter<EditProjectCard
             }
 
         }
-        holder.addImageToTask.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(onAddImageInterface != null)
-                {
-                    int imagesIn;
-                    if(project.getImage_path().get(0).equals("noImage"))
-                    imagesIn = 1;
-                    else
-                        imagesIn = project.getImage_path().size() + 1;
-                    /////image naming: {ProjectID}_{logo/poster..}_{numberOfImage}.jpg
-                    String imageName = project.getProject_id() + "_" + tasks.get(position).getTaskName() + "_" + imagesIn;
-                    onAddImageInterface.onImageSet(imageName,project.getImage_path(),project.getProject_id());
-                }
+        holder.addImageToTask.setOnClickListener(v -> {
+            if(onAddImageInterface != null)
+            {
+                int imagesIn;
+                if(project.getImage_path().get(0).equals("noImage"))
+                imagesIn = 1;
+                else
+                    imagesIn = project.getImage_path().size() + 1;
+
+                /////image naming: {ProjectID}_{logo/poster..}_{numberOfImage}.jpg
+                String imageName = project.getProject_id() + "_" + tasks.get(position).getTaskName() + "_" + imagesIn;
+                onAddImageInterface.onImageSet(imageName,project.getImage_path(),project.getProject_id());
             }
         });
 
@@ -113,12 +112,33 @@ public class EditProjectCardAdapter extends RecyclerView.Adapter<EditProjectCard
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
         {
+            ArrayList<Boolean> taskList = new ArrayList<>();
+
             if (isChecked)
             {
+                tasks.get(position).setTaskValue(true);
+                for (int i = 0; i < tasks.size(); i++) {
+                    taskList.add(tasks.get(i).isTaskValue());
+                }
                 enableTaskDesign(holder);
+                if(onAddImageInterface != null)
+                {
+                    onAddImageInterface.onTaskChange(taskList);
+                }
             }
             else
+            {
+                tasks.get(position).setTaskValue(false);
+                for (int i = 0; i < tasks.size(); i++) {
+                    taskList.add(tasks.get(i).isTaskValue());
+                }
                 disableTaskDesign(holder);
+                if(onAddImageInterface != null)
+                {
+                    onAddImageInterface.onTaskChange(taskList);
+                }
+            }
+
         }
     });
     }
