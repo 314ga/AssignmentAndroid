@@ -30,6 +30,8 @@ public interface ProjectsDao
     @Query("UPDATE Projects SET logo = :logo, poster = :poster, webpage = :webPage, photoedit = :photoedit, menu_design = :menu, bussinness_card = :bussinnessCard, diffeerent_task = :diffeerentTask,stored_online = :storedOnline  WHERE project_id = :id")
     int updateProjectTasks(int id, boolean logo, boolean poster,boolean webPage, boolean photoedit, boolean menu, boolean bussinnessCard, boolean diffeerentTask, boolean storedOnline);
 
+    @Query("UPDATE Projects SET spent_hours = :spentHours, price = :price WHERE project_id = :id")
+    int updateProjectTimeAndPrice(int id, double spentHours, double price);
 
     @Update
     void updateProjects(Projects note);

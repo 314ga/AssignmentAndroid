@@ -40,6 +40,10 @@ public class ProjectsViewModel extends AndroidViewModel {
     {
         projectsRepo.updateProject(id, hours, price,amountPerHour,projectDone,paidProject, storedOnline);
     }
+    public void updateTimePrice(int id, double spentHours, double price)
+    {
+        projectsRepo.updateTimePrice(id, spentHours, price);
+    }
 
      public void updateTasks(int id,ArrayList<Boolean> tasks)
      {

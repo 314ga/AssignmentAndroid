@@ -73,6 +73,15 @@ public class ProjectsRepo
         new ProjectsRepo.UpdateProjectTasks(projectsDao).execute(project);
     }
 
+    public void updateTimePrice(int id, double spentHours, double price)
+    {
+        Projects project = new Projects(0,price,"","",null,false,
+               false,false,false,false,
+                false,false,false,false,false,spentHours,0.0);
+        project.setProject_id(id);
+        new ProjectsRepo.UpdateProjectTimePrice(projectsDao).execute(project);
+    }
+
     public void deleteItem(){
         new ProjectsRepo.DeleteItemAsyncTask(projectsDao).execute();
     }
@@ -128,6 +137,20 @@ public class ProjectsRepo
             itemDao.updateProjectTasks(listItem[0].getProject_id(), listItem[0].isLogo(),
                     listItem[0].isPoster(),listItem[0].isWebpage(), listItem[0].isPhotoedit(),
                     listItem[0].isMenu_design(),listItem[0].isBussinness_card(),listItem[0].isDiffeerent_task(),listItem[0].isStored_online());
+            return null;
+        }
+    }
+
+    private static class UpdateProjectTimePrice extends AsyncTask<Projects,Void,Void> {
+        private ProjectsDao itemDao;
+        private UpdateProjectTimePrice(ProjectsDao itemDao) {
+            this.itemDao = itemDao;
+        }
+
+        @Override
+        protected Void doInBackground(Projects... listItem) {
+            itemDao.updateProjectTimeAndPrice(listItem[0].getProject_id(), listItem[0].getSpent_hours(),
+                    listItem[0].getPrice());
             return null;
         }
     }

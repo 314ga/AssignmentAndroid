@@ -1,37 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/gradient_background"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_view_countdown"
+    <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="00:00"
-        android:textColor="@android:color/black"
-        android:textSize="60sp" />
+        android:id="@+id/halfScreen"
+        app:layout_constraintGuide_percent=".50"
+        android:orientation="horizontal"/>
+
+    <LinearLayout
+        android:id="@+id/stopwatchLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:weightSum="5"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/halfScreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Spinner
+            android:id="@+id/spinnerProjects"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:backgroundTint="@color/white">
+
+        </Spinner>
+        <TextView
+            android:id="@+id/text_view_countdown"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="4"
+            android:layout_centerVertical="true"
+            android:text="00:00"
+            android:textColor="@android:color/white"
+            android:textSize="60sp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_start_pause"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_countdown"
         android:layout_centerHorizontal="true"
-        android:text="start" />
+        android:text="start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/halfScreen" />
 
     <Button
         android:id="@+id/button_reset"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_countdown"
-        android:layout_marginStart="11dp"
+        android:layout_height="0dp"
         android:layout_toEndOf="@+id/button_start_pause"
         android:text="reset"
-        android:visibility="invisible"
-        tools:visibility="visible" />
+        app:layout_constraintEnd_toEndOf="@id/buttonSaveTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_start_pause" />
+    <Button
+        android:id="@+id/buttonSaveTime"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_toEndOf="@+id/button_start_pause"
+        android:text="Save time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/button_reset"
+        app:layout_constraintTop_toBottomOf="@+id/button_start_pause" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

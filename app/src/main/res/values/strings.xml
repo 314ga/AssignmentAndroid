@@ -51,6 +51,6 @@
     <string name="save_changes">" Save changes "</string>
     <string name="euros">" € "</string>
     <string name="eurosPerHour">" €/h "</string>
-
+    <string name="server_client_id">"1052751154736-74b3gslj1po7svu0dvfjk9hoj24m8tuv.apps.googleusercontent.com"</string>
 
 </resources>
