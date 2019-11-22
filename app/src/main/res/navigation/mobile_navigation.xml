@@ -33,7 +33,7 @@
         android:id="@+id/nav_contact_customer"
         android:name="com.example.designernote.ui.contactCustomer.ContactCustomerFragment"
         android:label="@string/menu_contact_customer"
-        tools:layout="@layout/fragment_edit_project" />
+        tools:layout="@layout/fragment_gallery_inspiration" />
 
     <fragment
         android:id="@+id/nav_timer"

@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.designernote.R;
 import com.example.designernote.storageDB.Projects;
+import com.example.designernote.storageDB.viewModel.CustomerViewModel;
 import com.example.designernote.storageDB.viewModel.ProjectsViewModel;
 
 import java.util.ArrayList;
@@ -56,6 +57,7 @@ public class TimerFragment extends Fragment {
             }
         });
         projectSpinner = root.findViewById(R.id.spinnerProjects);
+        projectsViewModel = ViewModelProviders.of(this).get(ProjectsViewModel.class);
         projectsViewModel.getAllProjects().observe(this, new Observer<List<Projects>>() {
             @Override
             public void onChanged(List<Projects> projects)
