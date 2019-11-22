@@ -12,11 +12,10 @@
     <string name="action_play_next">Play Next</string>
     <string name="backdrop_title">LOVE MUSIC</string>
     <string name="backdrop_subtitle">This season top 20 albums</string>
-
     <string name="menu_projects">Projects</string>
     <string name="menu_create_task">Create new project</string>
     <string name="menu_create_customer">Create new customer</string>
-    <string name="menu_edit_project">Edit project</string>
+    <string name="inspiration">Inspiration</string>
     <string name="menu_contact_customer">Contact customer</string>
     <string name="test">Test</string>
     <string name="project_costs">PROJECT COSTS</string>
@@ -40,7 +39,7 @@
     <string name="project_includes">"Project includes"</string>
     <string name="hours">"h"</string>
     <string name="total_hours">"  Total hours"</string>
-    <string name="menu_gallery">"Gallery"</string>
+    <string name="menu_gallery">"Image inspiration"</string>
     <string name="time_hint">"00:00"</string>
     <string name="euro_hint">"00.00"</string>
     <string name="amount_per_hour">"€/h"</string>
@@ -52,6 +51,9 @@
     <string name="euros">" € "</string>
     <string name="eurosPerHour">" €/h "</string>
     <string name="server_client_id">"1052751154736-74b3gslj1po7svu0dvfjk9hoj24m8tuv.apps.googleusercontent.com"</string>
-    <string name="client_api_id">"34fda7c5a984936ecaf16c5c00fdbd95d5978c39a08f5b908e57b596b5226fc0"</string>
+    <string name="searchFor">"Inspiration for?"</string>
+    <string name="getInspiration">"Get inspiration"</string>
+    <string name="find_image">"Image taken from:"</string>
+    <string name="choose_project_name">"Choose project"</string>
 
 </resources>

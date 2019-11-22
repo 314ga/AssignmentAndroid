@@ -97,18 +97,20 @@
 
     </Switch>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:id="@+id/createCustomer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/create_customer"
-        android:background="@drawable/button_design"
+        app:rippleColor="@color/viewBg"
+        app:strokeColor="@color/white"
         android:textColor="@color/white"
+        app:strokeWidth="2dp"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber">
-
-    </Button>
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

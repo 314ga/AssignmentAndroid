@@ -1,14 +1,13 @@
 package com.example.designernote.apiLogic;
 
-import com.example.designernote.R;
+import java.util.List;
 
-import java.util.ArrayList;
-
+import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ImagesApi {
 
-    @GET("search/photos/?"+ R.string.client_api_id + "&per_page=30&query={searchValue}")
-    Result[] images(@Path("searchValue") String searchValue);
+    @GET("search/photos/")
+    Call<ResultList> getImages(@Query("client_id") String clientId, @Query("per_page")String perPage, @Query("query") String searchValue);
 }

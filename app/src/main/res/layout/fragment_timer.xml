@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/halfScreen"
-        app:layout_constraintGuide_percent=".50"
+        app:layout_constraintGuide_percent=".60"
         android:orientation="horizontal"/>
 
     <LinearLayout
@@ -18,19 +18,29 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:weightSum="5"
+        android:weightSum="7"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/halfScreen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|bottom"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:text="@string/choose_project_name"
+            android:layout_height="0dp">
+
+        </TextView>
         <Spinner
             android:id="@+id/spinnerProjects"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@null"
+            android:textColor="@color/white"
             android:backgroundTint="@color/white">
 
         </Spinner>
@@ -40,14 +50,22 @@
             android:layout_height="0dp"
             android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:layout_centerVertical="true"
             android:text="00:00"
             android:textColor="@android:color/white"
             android:textSize="60sp" />
     </LinearLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:strokeColor="@color/white"
+        app:rippleColor="@color/viewBg"
+        android:textColor="@color/white"
+        app:strokeWidth="2dp"
+
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
         android:id="@+id/button_start_pause"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,25 +73,38 @@
         android:text="start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/halfScreen" />
+        app:layout_constraintTop_toTopOf="@+id/halfScreen"/>
 
-    <Button
+
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:strokeColor="@color/white"
+        app:rippleColor="@color/viewBg"
+        android:textColor="@color/white"
+        app:strokeWidth="2dp"
         android:id="@+id/button_reset"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_toEndOf="@+id/button_start_pause"
         android:text="reset"
-        app:layout_constraintEnd_toEndOf="@id/buttonSaveTime"
+        app:layout_constraintEnd_toStartOf="@id/buttonSaveTime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_start_pause" />
-    <Button
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:strokeColor="@color/white"
+        app:rippleColor="@color/viewBg"
+        android:textColor="@color/white"
+        app:strokeWidth="2dp"
         android:id="@+id/buttonSaveTime"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_toEndOf="@+id/button_start_pause"
         android:text="Save time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/button_reset"
+        app:layout_constraintStart_toEndOf="@id/button_reset"
         app:layout_constraintTop_toBottomOf="@+id/button_start_pause" />
 
 

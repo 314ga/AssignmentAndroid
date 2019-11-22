@@ -234,17 +234,19 @@
 
     </EditText>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:id="@+id/createTaskBut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_design"
-        android:textColor="@color/white"
+        app:strokeColor="@color/white"
+        app:rippleColor="@color/viewBg"
         app:layout_constraintEnd_toStartOf="@+id/right_margin"
         app:layout_constraintStart_toStartOf="@+id/left_margin"
-        app:layout_constraintTop_toTopOf="@+id/third_guide">
-
-    </Button>
+        app:layout_constraintTop_toTopOf="@+id/third_guide"
+        android:textColor="@color/white"
+        app:strokeWidth="2dp"
+        android:text="@string/menu_create_task"/>
 
     <Switch
         android:id="@+id/saveOnline"

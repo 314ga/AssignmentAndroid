@@ -1,16 +1,16 @@
-package com.example.designernote.ui.home;
+package com.example.designernote.ui.imageInspiration;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ProjectViewModel extends ViewModel {
+public class ImageInspirationViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ProjectViewModel() {
+    public ImageInspirationViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is project fragment");
+        mText.setValue("This is share fragment");
     }
 
     public LiveData<String> getText() {

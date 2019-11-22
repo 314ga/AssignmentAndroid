@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -85,6 +86,18 @@ public class TimerFragment extends Fragment {
                 }
             }
         });
+        projectSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+               mButtonStartPause.setEnabled(true);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                mButtonStartPause.setEnabled(false);
+            }
+
+        });
 
         mButtonReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,9 +121,21 @@ public class TimerFragment extends Fragment {
         int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
         int hours = minutes/ 60;
         minutes = minutes - (hours*60);
+        int id = 0;
         double totalHours = hours + (double)minutes/100;
-        Toast.makeText(getContext(),totalHours + "",Toast.LENGTH_LONG).show();
-        //projectsViewModel.updateTimePrice(int id, double spentHours, double price)
+        double price = 0;
+        for (int i = 0; i < projectsList.size(); i++)
+        {
+            projectsList.get(i);
+            if(projectsList.get(i).getP_name().equals(projectSpinner.getSelectedItem().toString()))
+            {
+                id = projectsList.get(i).getProject_id();
+                totalHours = totalHours + projectsList.get(i).getSpent_hours();
+                price = projectsList.get(i).getPrice() + totalHours*projectsList.get(i).getAmountPerHour();
+                break;
+            }
+        }
+        projectsViewModel.updateTimePrice(id,totalHours, price);
     }
 
     private void setProjectsToSpinner(Spinner spinner, List<String> customerNames)

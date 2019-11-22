@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity{
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null)
                 {
-                    Toast.makeText(MainActivity.this, "Welcome " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
                     setUserHeader(user.getDisplayName(),user.getEmail());
 
                 } else {

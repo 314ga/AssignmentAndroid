@@ -1,4 +1,4 @@
-package com.example.designernote.ui.home;
+package com.example.designernote.ui.projects;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
