@@ -78,16 +78,16 @@ public class SettingActivity extends AppCompatActivity {
         CropImage.activity()
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .setAspectRatio(1,1)
+                .setRequestedSize(320,320)
                 .start(this);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE)
-        {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK)
-            {
+            if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
                 uploadImageToFirebase(resultUri);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
@@ -153,7 +153,7 @@ public class SettingActivity extends AppCompatActivity {
 // Download directly from StorageReference using Glide
 // (See MyAppGlideModule for Loader registration)
 
-        Glide.with(this /* context */)
+        Glide.with(getApplicationContext() /* context */)
                 .load(ref)
                 .signature(new ObjectKey(cacheImageNumber))
                 .into(imageView);

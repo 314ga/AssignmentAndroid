@@ -39,6 +39,7 @@ public class EditProjectCardAdapter extends RecyclerView.Adapter<EditProjectCard
     {
         this.tasks = tasks;
     }
+
     @Override
     public EditProjectCardAdapter.EditProjectViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
