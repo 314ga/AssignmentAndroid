@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +47,7 @@ public class EditProjectActivity extends AppCompatActivity implements OnAddImage
     EditText hoursValueText,ePriceValueText,amountPerHourValue;
     Button saveChanges;
     TextView eCustomerName,eProjectName;
+    private ImageButton backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +66,7 @@ public class EditProjectActivity extends AppCompatActivity implements OnAddImage
         storedOnline = findViewById(R.id.SwitchStorageState);
         eCustomerName = findViewById(R.id.eCustomerName);
         eProjectName = findViewById(R.id.eProjectName);
+        backButton = findViewById(R.id.backButtonEdit);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         tasks = new ArrayList<>();
 
@@ -88,6 +91,12 @@ public class EditProjectActivity extends AppCompatActivity implements OnAddImage
                             projectDone.isChecked(),projectPaid.isChecked(),storedOnline.isChecked());
                 }
             });
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     private ArrayList<Bitmap> getImagesByType(String img)
