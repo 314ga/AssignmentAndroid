@@ -47,7 +47,7 @@ public class ViewProjectActivity extends AppCompatActivity {
         finsihed = findViewById(R.id.doneValueImage);
         backButton = findViewById(R.id.backButton);
         projectName.setText(project.getP_name());
-        //customerName.setText(project.getCustomer_id());
+        //customerName.setText(project.getCustomer_id());//TODO: get later customer name from database
         tasksText.setText(getTaskString(tasks));
         priceText.setText(String.valueOf(project.getPrice()));
         hoursText.setText(String.valueOf(project.getSpent_hours()));

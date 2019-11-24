@@ -10,6 +10,10 @@ import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,10 +25,13 @@ import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.designernote.EditProjectActivity;
+import com.example.designernote.OnPopupButtonAction;
+import com.example.designernote.PopUpWindow;
 import com.example.designernote.R;
 import com.example.designernote.ViewProjectActivity;
 import com.example.designernote.modules.ImageToISModule;
 import com.example.designernote.storageDB.Projects;
+import com.example.designernote.storageDB.viewModel.ProjectsViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +39,11 @@ import java.util.List;
 public class ProjectCardAdapter extends RecyclerView.Adapter<ProjectCardAdapter.ProjectViewHolder>{
     private List<Projects> projects;
     Context context;
-
-    public ProjectCardAdapter(List<Projects> projects, Context context) {
+    ProjectsViewModel projectsViewModel;
+    public ProjectCardAdapter(List<Projects> projects, Context context, ProjectsViewModel projectsViewModel) {
         this.projects = projects;
         this.context = context;
+        this.projectsViewModel = projectsViewModel;
     }
 
     @Override
@@ -54,15 +62,21 @@ public class ProjectCardAdapter extends RecyclerView.Adapter<ProjectCardAdapter.
         {
             int drawable;
             if(projects.get(position).isBussinness_card())
-                drawable = R.mipmap.ic_bussiness_card_foreground;
+                drawable = R.mipmap.ic_business_card_foreground;
             else if(projects.get(position).isLogo())
-                drawable = R.mipmap.ic_logo_foreground;
+                drawable = R.mipmap.ic_logo_no_image_foreground;
             else if(projects.get(position).isMenu_design())
                 drawable = R.mipmap.ic_menu_foreground;
             else if(projects.get(position).isPoster())
                 drawable = R.mipmap.ic_poster_foreground;
+            else if(projects.get(position).isDiffeerent_task())
+                drawable = R.mipmap.ic_different_task_foreground;
+            else if(projects.get(position).isPhotoedit())
+                drawable = R.mipmap.ic_photo_edit_foreground;
+            else if(projects.get(position).isWebpage())
+                drawable = R.mipmap.ic_web_design_foreground;
             else
-                drawable = R.drawable.ic_launcher_foreground;
+                drawable = R.mipmap.ic_different_task_foreground;
 
             holder.personImage.setImageDrawable(ContextCompat.getDrawable(holder.projectName.getContext(), drawable));
             image = BitmapFactory.decodeResource(context.getResources(), drawable);
@@ -76,6 +90,7 @@ public class ProjectCardAdapter extends RecyclerView.Adapter<ProjectCardAdapter.
         }
          if(image != null)
             setDesignColor(holder, getColorsFromImage(image));
+
 
         holder.projectName.setText(projects.get(position).getP_name());
         holder.projectPrice.setText("" + projects.get(position).getPrice());
@@ -93,6 +108,7 @@ public class ProjectCardAdapter extends RecyclerView.Adapter<ProjectCardAdapter.
         holder.viewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animateView(holder.viewButton);
                 Projects project = projects.get(position);
                 Intent intent = new Intent(context, ViewProjectActivity.class);
                 intent.putExtra("Projects", project);
@@ -102,10 +118,28 @@ public class ProjectCardAdapter extends RecyclerView.Adapter<ProjectCardAdapter.
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animateView(holder.editButton);
                 Projects project = projects.get(position);
                 Intent intent = new Intent(context, EditProjectActivity.class);
                 intent.putExtra("Projects", project);
                 context.startActivity(intent);
+            }
+        });
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                PopUpWindow popUpWindow = new PopUpWindow();
+                popUpWindow.setPopup("Work time wasn't saved for this project.\n" +
+                        " Are you sure you want to reset timer?",context);
+                popUpWindow.setPopupButtonListener(new OnPopupButtonAction() {
+                    @Override
+                    public void onConfirmPopupBtn()
+                    {
+                        projectsViewModel.deleteProjectById(projects.get(position).getProject_id());
+                    }
+                });
+
             }
         });
     }
@@ -171,6 +205,19 @@ public class ProjectCardAdapter extends RecyclerView.Adapter<ProjectCardAdapter.
             colors[0] = vibrantSwatch.getBodyTextColor();
         }
         return colors;
+    }
+
+    private void animateView(ImageButton imgb) {
+        AnimationSet animationSet = new AnimationSet(true);
+
+        ScaleAnimation growAnimation = new ScaleAnimation(1.0f, 1.2f, 1.0f, 1.2f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        ScaleAnimation shrinkAnimation = new ScaleAnimation(1.2f, 1.0f, 1.2f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+
+        animationSet.addAnimation(growAnimation);
+        animationSet.addAnimation(shrinkAnimation);
+        animationSet.setDuration(100);
+
+        imgb.startAnimation(animationSet);
     }
 
 }

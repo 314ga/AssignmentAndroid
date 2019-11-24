@@ -49,5 +49,9 @@ public class ProjectsViewModel extends AndroidViewModel {
      {
          projectsRepo.updateTasks(tasks,id);
      }
+     public void deleteProjectById(int id)
+     {
+         projectsRepo.deleteProjectById(id);
+     }
 }
 

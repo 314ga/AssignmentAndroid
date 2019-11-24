@@ -31,6 +31,7 @@ public class ProjectPagerAdapter extends PagerAdapter {
         taskTrueCount = setTaskTrueCount();
         imageToISModule = new ImageToISModule();
     }
+
     /*
     This callback is responsible for creating a page. We inflate the layout and set the drawable
     to the ImageView based on the position. In the end we add the inflated layout to the parent
@@ -77,7 +78,7 @@ public class ProjectPagerAdapter extends PagerAdapter {
         //TODO:IMAGE NAMING
         /////image naming: {ProjectID}_{logo/poster..}_{numberOfImage}.jpg
         Bitmap image = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
-        if(position<=imagePaths.size() && hasSomeImages)
+        if(position<imagePaths.size() && hasSomeImages)
         {
             image = getImageFromPath(imagePaths.get(position));
             setImageLoadedFor(getImageTypeFromPath(imagePaths.get(position)));
@@ -129,7 +130,7 @@ public class ProjectPagerAdapter extends PagerAdapter {
         switch(imageNumber)
         {
             case 0:
-                imageDefault = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_logo_foreground);
+                imageDefault = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_logo_no_image_foreground);
 
                 break;
             case 1:
@@ -137,11 +138,11 @@ public class ProjectPagerAdapter extends PagerAdapter {
 
                 break;
             case 2:
-                imageDefault = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
+                imageDefault = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_photo_edit_foreground);
 
                 break;
             case 3:
-                imageDefault = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_bussiness_card_foreground);
+                imageDefault = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_business_card_foreground);
 
                 break;
             case 4:
@@ -149,11 +150,11 @@ public class ProjectPagerAdapter extends PagerAdapter {
 
                 break;
             case 5:
-                imageDefault = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
+                imageDefault = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_different_task_foreground);
 
                 break;
             case 6:
-                imageDefault = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
+                imageDefault = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_web_design_foreground);
 
                 break;
             default:

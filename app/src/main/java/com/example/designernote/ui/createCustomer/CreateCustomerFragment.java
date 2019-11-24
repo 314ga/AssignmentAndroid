@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.designernote.FieldChecker;
 import com.example.designernote.R;
 import com.example.designernote.storageDB.Customers;
 import com.example.designernote.storageDB.viewModel.CustomerViewModel;
@@ -23,6 +25,7 @@ public class CreateCustomerFragment extends Fragment {
 
     private CreateCustomerViewModel createCustomerViewModel;
     private CustomerViewModel cViewModel;
+    private FieldChecker fieldChecker;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         createCustomerViewModel =
@@ -42,19 +45,36 @@ public class CreateCustomerFragment extends Fragment {
 
             }
         });
-
-        createCustomerBut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
+        fieldChecker = new FieldChecker();
+        createCustomerBut.setOnClickListener(v -> {
+            Customers customer;
+            if(fieldChecker.checkIfFilled(firstName) &&  fieldChecker.checkIfFilled(lastName))
             {
-                Customers customer = new Customers(firstName.getText().toString(),lastName.getText().toString(),
-                        email.getText().toString(), phoneNumber.getText().toString());
+                if(fieldChecker.checkIfEmail(email))
+                {
+                    if(fieldChecker.checkIfPhone(phoneNumber))
+                    {
+                        customer = new Customers(firstName.getText().toString(),lastName.getText().toString(),
+                                email.getText().toString(), phoneNumber.getText().toString());
+                        if(saveOnlineCustomer.isChecked())
+                            saveCustomerOnline(customer);
+                        saveCustomer(customer);
+                        phoneNumber.setText("");
+                        email.setText("");
+                        saveOnlineCustomer.setChecked(false);
+                        firstName.setText("");
+                        lastName.setText("");
+                    }
+                    else
+                        Toast.makeText(getContext(), "Wrong phone number format", Toast.LENGTH_SHORT).show();
 
-                if(saveOnlineCustomer.isChecked())
-                    saveCustomerOnline(customer);
-                saveCustomer(customer);
-
+                }
+                else
+                    Toast.makeText(getContext(), "Wrong e-mail format", Toast.LENGTH_SHORT).show();
             }
+            else
+                Toast.makeText(getContext(), "Fill up all fields", Toast.LENGTH_SHORT).show();
+
         });
 
 

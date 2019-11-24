@@ -155,6 +155,7 @@ public class EditProjectActivity extends AppCompatActivity implements OnAddImage
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE)
         {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
@@ -170,6 +171,18 @@ public class EditProjectActivity extends AppCompatActivity implements OnAddImage
                         imgPaths.remove(0);
                     imgPaths.add(imageName+".jpg");
                     projectsViewModel.updateImagePath(imgPaths,id);
+                    tasks = new ArrayList<>();
+
+                    addTaskToTasks("logo",project.isLogo(), "Logo");
+                    addTaskToTasks("poster",project.isPoster(),"Poster");
+                    addTaskToTasks("web",project.isWebpage(), "Web page");
+                    addTaskToTasks("photoEdit",project.isPhotoedit(),"Photo edit");
+                    addTaskToTasks("menu",project.isMenu_design(), "Menu");
+                    addTaskToTasks("difTask",project.isDiffeerent_task(),"Different task: "+ project.getText_diff_task());
+                    addTaskToTasks("businessCard",project.isBussinness_card(), "Business card");
+                    mAdapter.setTasks(tasks);
+                    mAdapter.notifyDataSetChanged();
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

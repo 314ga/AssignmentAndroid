@@ -116,6 +116,13 @@ public class CreateAccount extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Authentication successful");
                             createFirebaseUserProfile(task.getResult().getUser());
+                            final FirebaseUser user = mAuth.getCurrentUser();
+                            if (user != null) {
+                                Intent intent = new Intent(CreateAccount.this, MainActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                finish();
+                            }
                         } else {
                             Toast.makeText(CreateAccount.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();

@@ -54,6 +54,10 @@ public class EditProjectCardAdapter extends RecyclerView.Adapter<EditProjectCard
     public void setOnTaskListener(OnAddImageInterface onAddImageInterface) {
         this.onAddImageInterface = onAddImageInterface;
     }
+    public void setTasks(List<Tasks> tasks)
+    {
+        this.tasks = tasks;
+    }
     @Override
     public EditProjectCardAdapter.EditProjectViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
@@ -74,22 +78,7 @@ public class EditProjectCardAdapter extends RecyclerView.Adapter<EditProjectCard
         {
             holder.isTaskChosen.setChecked(true);
             if(tasks.get(position).getTaskImages() != null)
-            {
-                int imageCount = tasks.get(position).getTaskImages().size();
-                if(imageCount == 1)
-                    holder.firstTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(0));
-                else if(imageCount == 2)
-                {
-                    holder.firstTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(0));
-                    holder.secondTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(1));
-                }
-                else if(imageCount == 3)
-                {
-                    holder.firstTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(0));
-                    holder.secondTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(1));
-                    holder.thirdTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(2));
-                }
-            }
+                updateImages(holder, position);
 
         }
         holder.addImageToTask.setOnClickListener(v -> {
@@ -143,6 +132,23 @@ public class EditProjectCardAdapter extends RecyclerView.Adapter<EditProjectCard
     });
     }
 
+    private void updateImages(EditProjectCardAdapter.EditProjectViewHolder holder, int position)
+    {
+        int imageCount = tasks.get(position).getTaskImages().size();
+        if(imageCount == 1)
+            holder.firstTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(0));
+        else if(imageCount == 2)
+        {
+            holder.firstTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(0));
+            holder.secondTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(1));
+        }
+        else if(imageCount == 3)
+        {
+            holder.firstTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(0));
+            holder.secondTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(1));
+            holder.thirdTaskImage.setImageBitmap(tasks.get(position).getTaskImages().get(2));
+        }
+    }
     @Override
     public int getItemCount() {
         return tasks.size();

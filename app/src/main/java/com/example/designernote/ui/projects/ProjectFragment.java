@@ -56,7 +56,7 @@ public class ProjectFragment extends Fragment {
 
                 }
                     //set adapter to recyclerview
-                mAdapter = new ProjectCardAdapter(projects,getActivity());
+                mAdapter = new ProjectCardAdapter(projects,getActivity(), pViewModel);
                 mRecyclerView.setAdapter(mAdapter);
 
             }
@@ -64,4 +64,5 @@ public class ProjectFragment extends Fragment {
 
         return root;
     }
+
 }

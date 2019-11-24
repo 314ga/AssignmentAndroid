@@ -20,6 +20,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.designernote.OnPopupButtonAction;
+import com.example.designernote.PopUpWindow;
 import com.example.designernote.R;
 import com.example.designernote.storageDB.Projects;
 import com.example.designernote.storageDB.viewModel.CustomerViewModel;
@@ -89,6 +91,7 @@ public class TimerFragment extends Fragment {
         projectSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+
                mButtonStartPause.setEnabled(true);
             }
 
@@ -102,7 +105,15 @@ public class TimerFragment extends Fragment {
         mButtonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resetTimer();
+                PopUpWindow popUpWindow = new PopUpWindow();
+                popUpWindow.setPopup("Work time wasn't saved for this project.\n" +
+                        " Are you sure you want to reset timer?",getContext());
+                popUpWindow.setPopupButtonListener(new OnPopupButtonAction() {
+                    @Override
+                    public void onConfirmPopupBtn() {
+                        resetTimer();
+                    }
+                });
             }
         });
         buttonSaveTime.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +133,7 @@ public class TimerFragment extends Fragment {
         int hours = minutes/ 60;
         minutes = minutes - (hours*60);
         int id = 0;
-        double totalHours = hours + (double)minutes/100;
+        double totalHours = 8 - hours + (double)minutes/100;
         double price = 0;
         for (int i = 0; i < projectsList.size(); i++)
         {
@@ -136,6 +147,8 @@ public class TimerFragment extends Fragment {
             }
         }
         projectsViewModel.updateTimePrice(id,totalHours, price);
+        resetTimer();
+
     }
 
     private void setProjectsToSpinner(Spinner spinner, List<String> customerNames)
@@ -199,9 +212,11 @@ public class TimerFragment extends Fragment {
 
             if (mTimeLeftInMillis != START_TIME_IN_MILLIS) {
                 mButtonReset.setEnabled(true);
+                projectSpinner.setEnabled(false);
                 buttonSaveTime.setEnabled(true);
             } else {
                 mButtonReset.setEnabled(false);
+                projectSpinner.setEnabled(true);
                 buttonSaveTime.setEnabled(false);
 
             }

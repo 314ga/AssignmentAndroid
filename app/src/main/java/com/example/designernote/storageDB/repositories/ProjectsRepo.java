@@ -81,6 +81,14 @@ public class ProjectsRepo
         project.setProject_id(id);
         new ProjectsRepo.UpdateProjectTimePrice(projectsDao).execute(project);
     }
+    public void deleteProjectById(int id)
+    {
+        Projects project = new Projects(0,0,"","",null,false,
+                false,false,false,false,
+                false,false,false,false,false,0,0.0);
+        project.setProject_id(id);
+        new ProjectsRepo.DeleteProjectById(projectsDao).execute(project);
+    }
 
     public void deleteItem(){
         new ProjectsRepo.DeleteItemAsyncTask(projectsDao).execute();
@@ -137,6 +145,18 @@ public class ProjectsRepo
             itemDao.updateProjectTasks(listItem[0].getProject_id(), listItem[0].isLogo(),
                     listItem[0].isPoster(),listItem[0].isWebpage(), listItem[0].isPhotoedit(),
                     listItem[0].isMenu_design(),listItem[0].isBussinness_card(),listItem[0].isDiffeerent_task(),listItem[0].isStored_online());
+            return null;
+        }
+    }
+    private static class DeleteProjectById extends AsyncTask<Projects,Void,Void> {
+        private ProjectsDao itemDao;
+        private DeleteProjectById(ProjectsDao itemDao) {
+            this.itemDao = itemDao;
+        }
+
+        @Override
+        protected Void doInBackground(Projects... listItem) {
+            itemDao.deleteByProjectId(listItem[0].getProject_id());
             return null;
         }
     }

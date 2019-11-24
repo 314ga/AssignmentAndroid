@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.designernote.FieldChecker;
 import com.example.designernote.R;
 import com.example.designernote.apiLogic.ImagesApi;
 import com.example.designernote.apiLogic.Result;
@@ -47,6 +48,7 @@ public class ImageInspirationFragment extends Fragment implements BaseSliderView
     private EditText editSearchText;
     private  ArrayList<String> listUrl, listName;
     private ProgressBar progressBar;
+    private FieldChecker fieldChecker;
     TextView imageLink;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +60,7 @@ public class ImageInspirationFragment extends Fragment implements BaseSliderView
             public void onChanged(@Nullable String s) {
             }
         });
+        fieldChecker = new FieldChecker();
         mDemoSlider = root.findViewById(R.id.slider);
         editSearchText = root.findViewById(R.id.searchEditText);
         searchButton = root.findViewById(R.id.searchForImages);
@@ -68,7 +71,7 @@ public class ImageInspirationFragment extends Fragment implements BaseSliderView
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!(editSearchText.getText().toString().matches("")))
+                if(fieldChecker.checkIfFilled(editSearchText))
                 {
                     mDemoSlider.removeAllSliders();
                     progressBar.setVisibility(View.VISIBLE);

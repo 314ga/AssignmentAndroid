@@ -33,6 +33,9 @@ public interface ProjectsDao
     @Query("UPDATE Projects SET spent_hours = :spentHours, price = :price WHERE project_id = :id")
     int updateProjectTimeAndPrice(int id, double spentHours, double price);
 
+    @Query("DELETE FROM Projects WHERE project_id = :id")
+    void deleteByProjectId(int id);
+
     @Update
     void updateProjects(Projects note);
 

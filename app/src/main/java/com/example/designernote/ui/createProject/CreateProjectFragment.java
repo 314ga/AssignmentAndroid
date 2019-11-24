@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.designernote.FieldChecker;
 import com.example.designernote.R;
 import com.example.designernote.models.CreateTask;
 import com.example.designernote.storageDB.Projects;
@@ -33,6 +34,7 @@ public class CreateProjectFragment extends Fragment {
     private CreateProjectViewModel galleryViewModel;
     private ProjectsViewModel pViewModel;
     private CustomerViewModel cViewModel;
+    private FieldChecker fieldChecker;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel = ViewModelProviders.of(this).get(CreateProjectViewModel.class);
@@ -42,6 +44,7 @@ public class CreateProjectFragment extends Fragment {
         final Spinner spinner = root.findViewById(R.id.spinnerPeople);
         final TextView spinnerPeopleTextView= root.findViewById(R.id.personSelection);
         final EditText projectNameTextView= root.findViewById(R.id.projectName);
+        final EditText amountPerHour = root.findViewById(R.id.amountPerHourEditText);
         final EditText ownTask= root.findViewById(R.id.ownTaskEditText);
         final TextView saveOnlineTextView= root.findViewById(R.id.saveOnline);
         final TextView chooseTypeOfWOrkTextView= root.findViewById(R.id.chooseTypeOfWork);
@@ -54,6 +57,7 @@ public class CreateProjectFragment extends Fragment {
         final CheckBox checkBox5= root.findViewById(R.id.checkBox5);
         final CheckBox checkBox6 = root.findViewById(R.id.checkBox6);
         final CheckBox checkBox7 = root.findViewById(R.id.checkBox7);
+        fieldChecker = new FieldChecker();
             cViewModel.getCustomerNames().observe(this, new Observer<List<String>>() {
                 @Override
                 public void onChanged(List<String> customers)
@@ -90,31 +94,60 @@ public class CreateProjectFragment extends Fragment {
                 ArrayList<String> fileDirs = new ArrayList<>();
                 fileDirs.add("noImage");
                 String differentTask = "";
-                if (checkBox7.isChecked())
-                    differentTask = ownTask.getText().toString();
-
-                Projects project = new Projects(Integer.parseInt(customer.get(0)), 0.0, projectNameTextView.getText().toString(),differentTask,fileDirs, checkBox2.isChecked(),
-                        checkBox3.isChecked(), checkBox4.isChecked(), checkBox5.isChecked(), checkBox6.isChecked(), checkBox7.isChecked(), checkBox1.isChecked(), false,
-                        false,false, 0.0,0.0);
-
-                if (saveOnlineProject.isChecked())
+                boolean differentTaskChecker = true;
+                if(fieldChecker.checkIfFilled(projectNameTextView) && fieldChecker.checkIfFilled(amountPerHour))
                 {
-                    project.setStored_online(true);
-                    if(!saveProjectOnline(project))
+                    if (checkBox7.isChecked())
                     {
-                        project.setStored_online(false);
-                        Toast.makeText(getActivity(), "Problem with storing project online", Toast.LENGTH_LONG).show();
+                        if(fieldChecker.checkIfFilled(ownTask) && fieldChecker.checkTextLong(ownTask,15))
+                            differentTask = ownTask.getText().toString();
+                        else
+                            differentTaskChecker = false;
+
+                    }
+                    if(differentTaskChecker)
+                    {
+                        Projects project = new Projects(Integer.parseInt(customer.get(0)), 0.0, projectNameTextView.getText().toString(),differentTask,fileDirs, checkBox2.isChecked(),
+                                checkBox3.isChecked(), checkBox4.isChecked(), checkBox5.isChecked(), checkBox6.isChecked(), checkBox7.isChecked(), checkBox1.isChecked(), false,
+                                false,false, 0.0,Double.parseDouble(amountPerHour.getText().toString()));
+
+                        if (saveOnlineProject.isChecked())
+                        {
+                            project.setStored_online(true);
+                            if(!saveProjectOnline(project))
+                            {
+                                project.setStored_online(false);
+                                Toast.makeText(getActivity(), "Problem with storing project online", Toast.LENGTH_LONG).show();
+                            }
+                            else
+                                Toast.makeText(getActivity(), "Project successfully stored online", Toast.LENGTH_LONG).show();
+                        }
+
+                        saveProject(project);
+
+                        projectNameTextView.setText("");
+                        amountPerHour.setText("");
+                        ownTask.setText("");
+
+                        saveOnlineProject.setChecked(false);
+                        checkBox1.setChecked(false);
+                        checkBox2.setChecked(false);
+                        checkBox3.setChecked(false);
+                        checkBox4.setChecked(false);
+                        checkBox5.setChecked(false);
+                        checkBox6.setChecked(false);
+                        checkBox7.setChecked(false);
                     }
                     else
-                        Toast.makeText(getActivity(), "Project successfully stored online", Toast.LENGTH_LONG).show();
-                }
+                        Toast.makeText(getActivity(), "Different task name too long or not filled", Toast.LENGTH_LONG).show();
 
-                saveProject(project);
+                }
+                else
+                    Toast.makeText(getActivity(), "Fill up project name and €/h", Toast.LENGTH_LONG).show();
             }
         });
         return root;
     }
-
     private void saveProject(Projects project)
     {
         pViewModel.insert(project);
