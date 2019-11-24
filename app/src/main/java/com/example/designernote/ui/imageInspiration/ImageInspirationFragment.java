@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.designernote.FieldChecker;
+import com.example.designernote.modules.FieldChecker;
 import com.example.designernote.R;
 import com.example.designernote.apiLogic.ImagesApi;
 import com.example.designernote.apiLogic.Result;
@@ -135,7 +135,6 @@ public class ImageInspirationFragment extends Fragment implements BaseSliderView
 
     private void requestImages(String imageSearch) {
         ImagesApi imagesApi = ServiceGenerator.getImagesApi();
-        //TODO: Possible to add number of loaded images to gallery
         Call<ResultList> images = imagesApi.getImages("34fda7c5a984936ecaf16c5c00fdbd95d5978c39a08f5b908e57b596b5226fc0","30",imageSearch);
         images.enqueue(new Callback<ResultList>() {
             @Override

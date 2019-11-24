@@ -1,4 +1,4 @@
-package com.example.designernote;
+package com.example.designernote.ui.viewProject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.designernote.R;
 import com.example.designernote.adapters.ProjectPagerAdapter;
 import com.example.designernote.storageDB.Projects;
 
@@ -47,7 +48,7 @@ public class ViewProjectActivity extends AppCompatActivity {
         finsihed = findViewById(R.id.doneValueImage);
         backButton = findViewById(R.id.backButton);
         projectName.setText(project.getP_name());
-        //customerName.setText(project.getCustomer_id());//TODO: get later customer name from database
+        //customerName.setText(project.getCustomer_id());//TODO: get customer name from database
         tasksText.setText(getTaskString(tasks));
         priceText.setText(String.valueOf(project.getPrice()));
         hoursText.setText(String.valueOf(project.getSpent_hours()));

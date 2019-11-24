@@ -1,40 +1,21 @@
 package com.example.designernote.adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.net.Uri;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.designernote.OnAddImageInterface;
+import com.example.designernote.interfaces.OnAddImageInterface;
 import com.example.designernote.R;
-import com.example.designernote.ViewProjectActivity;
 import com.example.designernote.models.Tasks;
-import com.example.designernote.modules.ImageToISModule;
 import com.example.designernote.storageDB.Projects;
 
 import java.util.ArrayList;

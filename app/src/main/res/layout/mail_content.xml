@@ -8,57 +8,71 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_main">
+    android:background="@drawable/gradient_background"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <EditText
-        android:id="@+id/to_address"
+        android:id="@+id/recipient"
+        android:textColorHint="@color/hintText"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Recipient"
         android:inputType="textEmailAddress"/>
 
     <EditText
-        android:id="@+id/subject"
+        android:id="@+id/enterSubject"
+        android:textColorHint="@color/hintText"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Subject" />
 
     <EditText
-        android:id="@+id/body"
+        android:id="@+id/enterMessage"
+        android:textColorHint="@color/hintText"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top"
         android:hint="Enter Message"
         android:lines="3" />
 
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:rippleColor="@color/viewBg"
+            app:strokeColor="@color/white"
+            android:textColor="@color/white"
+            app:strokeWidth="2dp"
+            android:id="@+id/browseBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add attachment" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="Attachment:">
+    </TextView>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp">
+        android:gravity="center|top"
+        android:layout_margin="20dp"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/attachmentImage"
+            android:layout_width="match_parent"
+            android:minWidth="200dp"
+            android:layout_height="match_parent">
 
-        <EditText
-            android:layout_weight="2"
-            android:id="@+id/attachmentData"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Attachment"
-            android:clickable="false"
-            android:enabled="false"/>
+        </ImageView>
 
-        <Button
-            android:layout_weight="1"
-            android:id="@+id/attachment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="BROWSE" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/changeAccount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Change Account" />
 
 </LinearLayout>

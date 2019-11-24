@@ -1,4 +1,4 @@
-package com.example.designernote;
+package com.example.designernote.interfaces;
 
 public interface OnPopupButtonAction
 {

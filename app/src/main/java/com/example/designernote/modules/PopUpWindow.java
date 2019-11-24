@@ -1,7 +1,6 @@
-package com.example.designernote;
+package com.example.designernote.modules;
 
 import android.content.Context;
-import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -9,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import com.example.designernote.R;
+import com.example.designernote.interfaces.OnPopupButtonAction;
 
 public class PopUpWindow {
 

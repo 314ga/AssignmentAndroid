@@ -1,4 +1,4 @@
-package com.example.designernote;
+package com.example.designernote.modules;
 
 import android.text.TextUtils;
 import android.util.Patterns;

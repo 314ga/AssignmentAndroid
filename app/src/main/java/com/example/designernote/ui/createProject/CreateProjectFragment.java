@@ -19,7 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.designernote.FieldChecker;
+import com.example.designernote.modules.FieldChecker;
 import com.example.designernote.R;
 import com.example.designernote.models.CreateTask;
 import com.example.designernote.storageDB.Projects;

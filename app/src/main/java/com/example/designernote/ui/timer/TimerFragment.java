@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -20,11 +19,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.designernote.OnPopupButtonAction;
-import com.example.designernote.PopUpWindow;
+import com.example.designernote.interfaces.OnPopupButtonAction;
+import com.example.designernote.modules.PopUpWindow;
 import com.example.designernote.R;
 import com.example.designernote.storageDB.Projects;
-import com.example.designernote.storageDB.viewModel.CustomerViewModel;
 import com.example.designernote.storageDB.viewModel.ProjectsViewModel;
 
 import java.util.ArrayList;

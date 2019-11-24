@@ -53,4 +53,14 @@ public class ImageToISModule {
         }
 
     }
+    public boolean deleteImageFromStorage(String path, Context context)
+    {
+            ContextWrapper cw = new ContextWrapper(context);
+            File directory = cw.getDir("DesignerNote", Context.MODE_PRIVATE);
+            File mypath=new File(directory ,path);
+            if(mypath.delete())
+                return true;
+            else
+                return false;
+    }
 }

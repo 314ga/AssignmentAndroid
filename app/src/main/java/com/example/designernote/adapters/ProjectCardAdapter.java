@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -24,11 +23,11 @@ import androidx.core.content.ContextCompat;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.designernote.EditProjectActivity;
-import com.example.designernote.OnPopupButtonAction;
-import com.example.designernote.PopUpWindow;
+import com.example.designernote.ui.editProject.EditProjectActivity;
+import com.example.designernote.interfaces.OnPopupButtonAction;
+import com.example.designernote.modules.PopUpWindow;
 import com.example.designernote.R;
-import com.example.designernote.ViewProjectActivity;
+import com.example.designernote.ui.viewProject.ViewProjectActivity;
 import com.example.designernote.modules.ImageToISModule;
 import com.example.designernote.storageDB.Projects;
 import com.example.designernote.storageDB.viewModel.ProjectsViewModel;
@@ -130,8 +129,7 @@ public class ProjectCardAdapter extends RecyclerView.Adapter<ProjectCardAdapter.
             public void onClick(View v)
             {
                 PopUpWindow popUpWindow = new PopUpWindow();
-                popUpWindow.setPopup("Work time wasn't saved for this project.\n" +
-                        " Are you sure you want to reset timer?",context);
+                popUpWindow.setPopup("Are you sure you want to delete this project?",context);
                 popUpWindow.setPopupButtonListener(new OnPopupButtonAction() {
                     @Override
                     public void onConfirmPopupBtn()

@@ -1,4 +1,4 @@
-package com.example.designernote;
+package com.example.designernote.interfaces;
 
 import android.graphics.Bitmap;
 import android.view.View;

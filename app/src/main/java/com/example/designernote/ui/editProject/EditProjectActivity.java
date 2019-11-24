@@ -1,4 +1,4 @@
-package com.example.designernote;
+package com.example.designernote.ui.editProject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -17,6 +17,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.designernote.interfaces.OnAddImageInterface;
+import com.example.designernote.R;
 import com.example.designernote.adapters.EditProjectCardAdapter;
 import com.example.designernote.models.Tasks;
 import com.example.designernote.modules.ImageToISModule;
@@ -141,6 +143,7 @@ public class EditProjectActivity extends AppCompatActivity implements OnAddImage
     public void onTaskChange(ArrayList<Boolean> tasks)
     {
         projectsViewModel.updateTasks(project.getProject_id(),tasks);
+        //TODO:Delete Images from storage and update string path in database
     }
 
     private void openFileChooser()

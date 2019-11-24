@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -16,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.designernote.FieldChecker;
+import com.example.designernote.modules.FieldChecker;
 import com.example.designernote.R;
 import com.example.designernote.storageDB.Customers;
 import com.example.designernote.storageDB.viewModel.CustomerViewModel;
